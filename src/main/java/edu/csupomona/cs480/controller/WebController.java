@@ -131,5 +131,16 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	
+	/**
+	 * This API tests to see if Alex knows what he is doing.
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/cs480/alextest", method = RequestMethod.GET)
+	String alexTest() {
+		String testString = "" + Math.PI;
+		return testString;
+	}
 
 }
