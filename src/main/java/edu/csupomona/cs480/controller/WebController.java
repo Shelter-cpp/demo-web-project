@@ -142,5 +142,16 @@ public class WebController {
 		String testString = "" + Math.PI;
 		return testString;
 	}
+	
+	/**
+	 * This API tests to see if Daniel knows what he is doing.
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
+	String danielTest() {
+		String myString = "Ey b0ss, give me the code please.";
+		return myString;
+	}
 
 }
