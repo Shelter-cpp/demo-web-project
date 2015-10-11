@@ -153,5 +153,15 @@ public class WebController {
 		String myString = "Ey b0ss, give me the code please.";
 		return myString;
 	}
-
+     
+     /**
+      * This API tests to see if Ian knows what he is doing.
+      *
+      * @return
+      */
+     @RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
+     String ianTest() {
+          String testString = "" + Math.pow(2, .5);
+          return testString;
+     }
 }
