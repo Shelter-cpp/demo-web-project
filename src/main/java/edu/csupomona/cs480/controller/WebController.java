@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.csupomona.cs480.App;
+import edu.csupomona.cs480.Sheltercpp;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.UserManager;
 
@@ -32,7 +32,7 @@ public class WebController {
 	 * instance from the defined beans.
 	 * <p>
 	 * In our project, all the beans are defined in
-	 * the {@link App} class.
+	 * the {@link Sheltercpp} class.
 	 */
 	@Autowired
 	private UserManager userManager;
