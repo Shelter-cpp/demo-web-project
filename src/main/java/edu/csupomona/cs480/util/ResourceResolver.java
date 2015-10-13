@@ -23,4 +23,12 @@ public class ResourceResolver {
 		}
 		return file;
 	}
+	
+	public static File getTestFile() {
+		File file = new File(BASE_DIR + "/" + "test.json");
+		if(!file.getParentFile().exists()) {
+			file.getParentFile().mkdirs();
+		}
+		return file;
+	}
 }

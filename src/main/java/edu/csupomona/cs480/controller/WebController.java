@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.csupomona.cs480.Sheltercpp;
 import edu.csupomona.cs480.data.User;
+import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
 
@@ -36,6 +37,9 @@ public class WebController {
 	 */
 	@Autowired
 	private UserManager userManager;
+	@Autowired
+	private FSUserManager testManager;
+	
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -138,9 +142,11 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping(value = "/cs480/alextest", method = RequestMethod.GET)
-	String alexTest() {
-		String testString = "" + Math.PI;
-		return testString;
+	User alexTest() {
+		testManager.updateTestUser();
+		User user;
+		user = testManager.getTestUser();
+		return user;
 	}
 	
 	/**

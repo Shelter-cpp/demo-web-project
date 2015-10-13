@@ -53,6 +53,23 @@ public class FSUserManager implements UserManager {
 		}
 		return userMap;
 	}
+	
+	private UserMap getTestMap() {
+		UserMap userMap = null;
+		File userFile = ResourceResolver.getTestFile();
+		if (userFile.exists()) {
+			// read the file and convert the JSON content
+			// to the UserMap object
+			try {
+				userMap = JSON.readValue(userFile, UserMap.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else {
+			userMap = new UserMap();
+		}
+		return userMap;
+	}
 
 	/**
 	 * Save and persist the user map in the local file.
@@ -67,7 +84,31 @@ public class FSUserManager implements UserManager {
 			e.printStackTrace();
 		}
 	}
+	
+	private void persistTestMap(UserMap userMap) {
+		try {
+			// convert the user object to JSON format
+			JSON.writeValue(ResourceResolver.getTestFile(), userMap);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
+	public User getTestUser() {
+		UserMap userMap = getTestMap();
+		return userMap.get("alex");
+	}
+	
+	public void updateTestUser() {
+		User user = new User();
+		user.setId("alex");
+		user.setMajor("cs");
+		user.setName("Alex Horstman");
+		UserMap userMap = getUserMap();
+		userMap.put(user.getId(), user);
+		persistTestMap(userMap);
+	}
+	
 	@Override
 	public User getUser(String userId) {
 		UserMap userMap = getUserMap();
