@@ -142,11 +142,16 @@ public class WebController {
 	 * @return
 	 */
 	@RequestMapping(value = "/cs480/alextest", method = RequestMethod.GET)
-	User alexTest() {
+	ModelAndView alexTest() {
+		ModelAndView modelAndView = new ModelAndView("user-home");
+		modelAndView.addObject("users", listAllUsers());
+		return modelAndView;
+		/*
 		testManager.updateTestUser();
 		User user;
 		user = testManager.getTestUser();
 		return user;
+		*/
 	}
 	
 	/**
