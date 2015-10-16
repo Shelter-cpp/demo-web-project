@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickTabs</title>
-    <link rel="stylesheet" href="<@s.url value='C:\Users\Alex Ander\Desktop\eclipse\workspace\demo-web-project\src\main\resources\templates\foundation.css'/>" type="text/css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="C:\Users\Alex Ander\Desktop\eclipse\workspace\demo-web-project\src\main\resources\templates\foundation\css\foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
@@ -185,7 +185,7 @@
               <div class="row">
      
                 <div class="large-6 columns">
-                  <p>Â© Copyright no one at all. Go to town.</p>
+                  <p>© Copyright no one at all. Go to town.</p>
                 </div>
      
                 <div class="large-6 columns">
