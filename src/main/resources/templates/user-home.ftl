@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickTabs</title>
-    <link rel="stylesheet" href="<c.url value='C:/Users/Alex Ander/Desktop/eclipse/workspace/demo-web-project/src/main/resources/static/foundation.css'/>" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="../foundation.css" type="text/css" media="screen"/>
     <script src="js/vendor/modernizr.js"></script>
   </head>
   <body>
