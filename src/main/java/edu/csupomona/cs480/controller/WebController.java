@@ -90,6 +90,7 @@ public class WebController {
 	 * @param major
 	 * @return
 	 */
+	/*
 	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
 	User updateUser(
 			@PathVariable("userId") String id,
@@ -102,6 +103,7 @@ public class WebController {
 		userManager.updateUser(user);
 		return user;
 	}
+	*/
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -141,37 +143,41 @@ public class WebController {
 	 * 
 	 * @return
 	 */
+	/*
 	@RequestMapping(value = "/cs480/alextest", method = RequestMethod.GET)
 	ModelAndView alexTest() {
 		ModelAndView modelAndView = new ModelAndView("test-home");
 		return modelAndView;
-		/*
 		testManager.updateTestUser();
 		User user;
 		user = testManager.getTestUser();
 		return user;
-		*/
 	}
+	*/
 	
 	/**
 	 * This API tests to see if Daniel knows what he is doing.
 	 * 
 	 * @return
 	 */
+	/*
 	@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
 	String danielTest() {
 		String myString = "Ey b0ss, give me the code please.";
 		return myString;
 	}
+	*/
      
      /**
       * This API tests to see if Ian knows what he is doing.
       *
       * @return
       */
+	/*
      @RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
      String ianTest() {
           String testString = "" + Math.pow(2, .5);
           return testString;
      }
+     */
 }

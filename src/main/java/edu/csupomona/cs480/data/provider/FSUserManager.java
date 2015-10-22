@@ -99,6 +99,7 @@ public class FSUserManager implements UserManager {
 		return userMap.get("alex");
 	}
 	
+	/*
 	public void updateTestUser() {
 		User user = new User();
 		user.setId("alex");
@@ -108,6 +109,7 @@ public class FSUserManager implements UserManager {
 		userMap.put(user.getId(), user);
 		persistTestMap(userMap);
 	}
+	*/
 	
 	@Override
 	public User getUser(String userId) {
@@ -118,7 +120,7 @@ public class FSUserManager implements UserManager {
 	@Override
 	public void updateUser(User user) {
 		UserMap userMap = getUserMap();
-		userMap.put(user.getId(), user);
+		userMap.put(user.getUsername(), user);
 		persistUserMap(userMap);
 	}
 
