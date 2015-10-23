@@ -3,12 +3,16 @@ package edu.csupomona.cs480.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
+
 public class Bookmarks {
 	
 	/** The name of the bookmark */
 	private String name;
 	/** The list of URLs the user has bookmarked */
 	private List<String> urls = new ArrayList<>();
+	
+	public Bookmarks() {}
 	
 	public Bookmarks(String name) {
 		this.name = name;
@@ -40,7 +44,7 @@ public class Bookmarks {
 	 * 
 	 * @return
 	 */
-	public int getUrlCount() {
+	public int urlCount() {
 		return urls.size();
 	}
 	
@@ -51,7 +55,7 @@ public class Bookmarks {
 	 */
 	public int addUrl(String url) {
 		urls.add(url);
-		return getUrlCount();
+		return urlCount();
 	}
 	
 	/** Removes the url at the given index
@@ -61,6 +65,6 @@ public class Bookmarks {
 	 */
 	public int remove(int index) {
 		urls.remove(index);
-		return getUrlCount();
+		return urlCount();
 	}
 }

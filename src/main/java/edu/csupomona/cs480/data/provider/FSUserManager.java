@@ -46,6 +46,7 @@ public class FSUserManager implements UserManager {
 			try {
 				userMap = JSON.readValue(userFile, UserMap.class);
 			} catch (IOException e) {
+				userMap = new UserMap();
 				e.printStackTrace();
 			}
 		} else {
@@ -85,6 +86,7 @@ public class FSUserManager implements UserManager {
 		}
 	}
 	
+	/*
 	private void persistTestMap(UserMap userMap) {
 		try {
 			// convert the user object to JSON format
@@ -93,11 +95,14 @@ public class FSUserManager implements UserManager {
 			e.printStackTrace();
 		}
 	}
+	*/
 
+	/*
 	public User getTestUser() {
 		UserMap userMap = getTestMap();
 		return userMap.get("alex");
 	}
+	*/
 	
 	/*
 	public void updateTestUser() {

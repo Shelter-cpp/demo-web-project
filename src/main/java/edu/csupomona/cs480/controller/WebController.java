@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.csupomona.cs480.Sheltercpp;
+import edu.csupomona.cs480.data.Bookmarks;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.UserManager;
@@ -90,20 +91,20 @@ public class WebController {
 	 * @param major
 	 * @return
 	 */
-	/*
+	
 	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
 	User updateUser(
 			@PathVariable("userId") String id,
 			@RequestParam("name") String name,
 			@RequestParam(value = "major", required = false) String major) {
-		User user = new User();
-		user.setId(id);
-		user.setMajor(major);
-		user.setName(name);
+		User user = new User(id, "password");
+		//user.setUsername(id);
+		//user.setMajor(major);
+		//user.setName(name);
 		userManager.updateUser(user);
 		return user;
 	}
-	*/
+	
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -137,6 +138,45 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	
+	/** 
+	 * Displays all of the information about the given user
+	 * 
+	 * @param username
+	 * @return
+	 */
+	@RequestMapping(value = "/get/{username}", method = RequestMethod.GET)
+	String getUserInfo(@PathVariable("username") String username) {
+		User newUser = new User(username, "password");
+		String testUrl1 = "www.google.com";
+		String testUrl2 = "www.facebook.com";
+		String testUrl3 = "www.github.com";
+		String testUrl4 = "www.youtube.com";
+		Bookmarks testBookmark1 = new Bookmarks("Bookmark 1");
+		testBookmark1.addUrl(testUrl1);
+		testBookmark1.addUrl(testUrl2);
+		testBookmark1.addUrl(testUrl3);
+		testBookmark1.addUrl(testUrl4);
+		Bookmarks testBookmark2 = new Bookmarks("Bookmark 2");
+		testBookmark2.addUrl(testUrl2);
+		testBookmark2.addUrl(testUrl3);
+		Bookmarks testBookmark3 = new Bookmarks("Bookmark 3");
+		testBookmark3.addUrl(testUrl1);
+		testBookmark3.addUrl(testUrl2);
+		testBookmark3.addUrl(testUrl3);
+		Bookmarks testBookmark4 = new Bookmarks("Bookmark 4");
+		testBookmark4.addUrl(testUrl1);
+		testBookmark4.addUrl(testUrl4);
+		newUser.addBookmark(testBookmark1);
+		newUser.addBookmark(testBookmark2);
+		newUser.addBookmark(testBookmark3);
+		newUser.addBookmark(testBookmark4);
+		userManager.updateUser(newUser);
+		
+		String userInfo = userManager.getUser(username).toString();
+		return userInfo;
+	}
+	
 	
 	/**
 	 * This API tests to see if Alex knows what he is doing.

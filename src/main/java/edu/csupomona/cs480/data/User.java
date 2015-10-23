@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Ignore;
+
 
 /**
  * The basic user object.
@@ -19,6 +21,8 @@ public class User {
     /** The list of bookmarks that the user has created */
     private List<Bookmarks> bookmarks = new ArrayList<>();
     
+    private int bookmarkCount;
+    
     /** Creates a user given their username and password
      * 
      * @param username
@@ -28,6 +32,13 @@ public class User {
     	this.username = username;
     	this.password = password;
     }
+    
+    public User(String username) {
+    	this.username = username;
+    	password = "password";
+    }
+    
+    public User() {}
 
     public String getUsername() {
         return username;
@@ -79,6 +90,7 @@ public class User {
 	 * 
 	 * @return
 	 */
+	@Ignore
 	public int getBookmarkCount() {
 		return bookmarks.size();
 	}
