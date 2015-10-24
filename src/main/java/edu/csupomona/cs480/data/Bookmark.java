@@ -5,16 +5,16 @@ import java.util.List;
 
 import org.junit.Ignore;
 
-public class Bookmarks {
+public class Bookmark implements BookmarkInterface{
 	
 	/** The name of the bookmark */
 	private String name;
 	/** The list of URLs the user has bookmarked */
 	private List<String> urls = new ArrayList<>();
 	
-	public Bookmarks() {}
+	public Bookmark() {}
 	
-	public Bookmarks(String name) {
+	public Bookmark(String name) {
 		this.name = name;
 	}
 	
@@ -23,7 +23,7 @@ public class Bookmarks {
 	 * 
 	 * @param url
 	 */
-	public Bookmarks(String name, String url) {
+	public Bookmark(String name, String url) {
 		this.name = name;
 		urls.add(url);
 	}
@@ -44,7 +44,7 @@ public class Bookmarks {
 	 * 
 	 * @return
 	 */
-	public int urlCount() {
+	public int getUrlCount() {
 		return urls.size();
 	}
 	
@@ -55,7 +55,7 @@ public class Bookmarks {
 	 */
 	public int addUrl(String url) {
 		urls.add(url);
-		return urlCount();
+		return getUrlCount();
 	}
 	
 	/** Removes the url at the given index
@@ -65,6 +65,17 @@ public class Bookmarks {
 	 */
 	public int remove(int index) {
 		urls.remove(index);
-		return urlCount();
+		return getUrlCount();
+	}
+	
+	public boolean changeUrl(int index,String newUrl) {
+		if(index < urls.size()){
+			urls.set(index, newUrl);
+			return true;
+		}
+		else {
+			return false;
+		}
+		
 	}
 }

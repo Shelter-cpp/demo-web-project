@@ -10,19 +10,19 @@ public class UserTest {
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";
 		String testUrl4 = "www.youtube.com";
-		Bookmarks testBookmark1 = new Bookmarks("Bookmark 1");
+		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
 		testBookmark1.addUrl(testUrl1);
 		testBookmark1.addUrl(testUrl2);
 		testBookmark1.addUrl(testUrl3);
 		testBookmark1.addUrl(testUrl4);
-		Bookmarks testBookmark2 = new Bookmarks("Bookmark 2");
+		Bookmark testBookmark2 = new Bookmark("Bookmark 2");
 		testBookmark2.addUrl(testUrl2);
 		testBookmark2.addUrl(testUrl3);
-		Bookmarks testBookmark3 = new Bookmarks("Bookmark 3");
+		Bookmark testBookmark3 = new Bookmark("Bookmark 3");
 		testBookmark3.addUrl(testUrl1);
 		testBookmark3.addUrl(testUrl2);
 		testBookmark3.addUrl(testUrl3);
-		Bookmarks testBookmark4 = new Bookmarks("Bookmark 4");
+		Bookmark testBookmark4 = new Bookmark("Bookmark 4");
 		testBookmark4.addUrl(testUrl1);
 		testBookmark4.addUrl(testUrl4);
 		testUser.addBookmark(testBookmark1);
@@ -53,10 +53,10 @@ public class UserTest {
 	@Test
 	public void testBookmarkCount() {
 		User testUser  =new User("TestUser", "TestPassword");
-		Bookmarks testBookmark1 = new Bookmarks("Bookmark 1");
-		Bookmarks testBookmark2 = new Bookmarks("Bookmark 2");
-		Bookmarks testBookmark3 = new Bookmarks("Bookmark 3");
-		Bookmarks testBookmark4 = new Bookmarks("Bookmark 4");
+		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
+		Bookmark testBookmark2 = new Bookmark("Bookmark 2");
+		Bookmark testBookmark3 = new Bookmark("Bookmark 3");
+		Bookmark testBookmark4 = new Bookmark("Bookmark 4");
 		testUser.addBookmark(testBookmark1);
 		testUser.addBookmark(testBookmark2);
 		testUser.addBookmark(testBookmark3);
@@ -71,19 +71,19 @@ public class UserTest {
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";
 		String testUrl4 = "www.youtube.com";
-		Bookmarks testBookmark1 = new Bookmarks("Bookmark 1");
+		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
 		testBookmark1.addUrl(testUrl1);
 		testBookmark1.addUrl(testUrl2);
 		testBookmark1.addUrl(testUrl3);
 		testBookmark1.addUrl(testUrl4);
-		Bookmarks testBookmark2 = new Bookmarks("Bookmark 2");
+		Bookmark testBookmark2 = new Bookmark("Bookmark 2");
 		testBookmark2.addUrl(testUrl2);
 		testBookmark2.addUrl(testUrl3);
-		Bookmarks testBookmark3 = new Bookmarks("Bookmark 3");
+		Bookmark testBookmark3 = new Bookmark("Bookmark 3");
 		testBookmark3.addUrl(testUrl1);
 		testBookmark3.addUrl(testUrl2);
 		testBookmark3.addUrl(testUrl3);
-		Bookmarks testBookmark4 = new Bookmarks("Bookmark 4");
+		Bookmark testBookmark4 = new Bookmark("Bookmark 4");
 		testBookmark4.addUrl(testUrl1);
 		testBookmark4.addUrl(testUrl4);
 		testUser.addBookmark(testBookmark1);
@@ -98,10 +98,10 @@ public class UserTest {
 	@Test
 	public void testDeleteBookmark() {
 		User testUser  =new User("TestUser", "TestPassword");
-		Bookmarks testBookmark1 = new Bookmarks("Bookmark 1");
-		Bookmarks testBookmark2 = new Bookmarks("Bookmark 2");
-		Bookmarks testBookmark3 = new Bookmarks("Bookmark 3");
-		Bookmarks testBookmark4 = new Bookmarks("Bookmark 4");
+		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
+		Bookmark testBookmark2 = new Bookmark("Bookmark 2");
+		Bookmark testBookmark3 = new Bookmark("Bookmark 3");
+		Bookmark testBookmark4 = new Bookmark("Bookmark 4");
 		testUser.addBookmark(testBookmark1);
 		testUser.addBookmark(testBookmark2);
 		testUser.addBookmark(testBookmark3);

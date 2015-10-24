@@ -10,7 +10,7 @@ import org.junit.Ignore;
 /**
  * The basic user object.
  */
-public class User {
+public class User implements UserInterface {
 
 	/** The unique user Id */
     private String username;
@@ -19,8 +19,10 @@ public class User {
     /** The timestamp when the user is being created */
     private String creationTime = new Date(System.currentTimeMillis()).toString();
     /** The list of bookmarks that the user has created */
-    private List<Bookmarks> bookmarks = new ArrayList<>();
+    private List<Bookmark> bookmarks = new ArrayList<>();
     
+    //placeholder for JSON data
+    //DO NOT USE
     private int bookmarkCount;
     
     /** Creates a user given their username and password
@@ -56,7 +58,7 @@ public class User {
     	return password;
     }
 
-	public List<Bookmarks> getBookmarks() {
+	public List<Bookmark> getBookmarks() {
 		return bookmarks;
 	}
 
@@ -82,15 +84,14 @@ public class User {
 	 * @param index
 	 * @return
 	 */
-	public Bookmarks getBookmark(int index) {
-		return bookmarks.get(index);
+	public Bookmark getBookmark(int bookmarkNumber) {
+		return bookmarks.get(bookmarkNumber);
 	}
 	
 	/** Returns the number of bookmarks this user has created
 	 * 
 	 * @return
 	 */
-	@Ignore
 	public int getBookmarkCount() {
 		return bookmarks.size();
 	}
@@ -99,16 +100,18 @@ public class User {
 	 * 
 	 * @param newBookmark
 	 */
-	public void addBookmark(Bookmarks newBookmark) {
+	public int addBookmark(Bookmark newBookmark) {
 		bookmarks.add(newBookmark);
+		return getBookmarkCount();
 	}
 	
 	/** Deletes the bookmark at the given index
 	 * 
 	 * @param index
 	 */
-	public void deleteBookmark(int index) {
+	public int deleteBookmark(int index) {
 		bookmarks.remove(index);
+		return getBookmarkCount();
 	}
 	
 	/** Swaps the position of the bookmarks at the two given indexes
@@ -117,8 +120,8 @@ public class User {
 	 * @param index2
 	 */
 	public void swapBookmarks(int index1, int index2) {
-		Bookmarks temp1 = bookmarks.get(index1);
-		Bookmarks temp2 = bookmarks.get(index2);
+		Bookmark temp1 = bookmarks.get(index1);
+		Bookmark temp2 = bookmarks.get(index2);
 		bookmarks.set(index1, temp2);
 		bookmarks.set(index2, temp1);
 	}
@@ -130,7 +133,7 @@ public class User {
 		String returnString = "";
 		returnString += "Username:" + username + "; Password: " + password + "; # of Bookmarks: " + getBookmarkCount() + ";\n Bookmarks: ";
 		for(int i = 0; i < getBookmarkCount(); i++) {
-			Bookmarks bookmark = getBookmark(i);
+			Bookmark bookmark = getBookmark(i);
 			returnString += "\n" + bookmark.getName() + "- ";
 			List<String> urls = bookmark.getUrls();
 			for(int j = 0; j < urls.size(); j++) {
