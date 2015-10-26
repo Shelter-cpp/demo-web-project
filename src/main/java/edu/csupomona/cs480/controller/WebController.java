@@ -1,7 +1,7 @@
 package edu.csupomona.cs480.controller;
 
 import java.util.List;
-
+import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -200,13 +200,20 @@ public class WebController {
 	 * 
 	 * @return
 	 */
-	/*
 	@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
 	String danielTest() {
 		String myString = "Ey b0ss, give me the code please.";
-		return myString;
+		//for assignment 5, apparently all it does is print 000000 to console
+		//when the url is accessed
+		DescriptiveStatistics stats = new DescriptiveStatistics();
+		int a[] = new int[6];
+		for( int i = 0; i < a.length; i++) {
+	        stats.addValue(a[i]);
+	        System.out.print(a[i]);
+		}
+	    return myString;
 	}
-	*/
+	
      
      /**
       * This API tests to see if Ian knows what he is doing.
