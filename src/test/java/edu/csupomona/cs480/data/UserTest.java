@@ -83,4 +83,6 @@ public class UserTest {
 		testUser.deleteBookmark(2);
 		Assert.assertEquals(3, testUser.getBookmarkCount());
 	}
+	
+	
 }
