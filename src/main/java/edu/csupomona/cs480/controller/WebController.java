@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.base.MoreObjects;
+
 import edu.csupomona.cs480.Sheltercpp;
 import edu.csupomona.cs480.data.Admin;
 import edu.csupomona.cs480.data.Bookmark;
@@ -229,11 +231,9 @@ public class WebController {
       *
       * @return
       */
-	/*
      @RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
      String ianTest() {
-          String testString = "" + Math.pow(2, .5);
+          String testString = "" + Math.pow(2, .5) + " " + MoreObjects.toStringHelper(this).toString();
           return testString;
      }
-     */
 }
