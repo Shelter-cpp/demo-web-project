@@ -12,6 +12,8 @@ public class Bookmark implements BookmarkInterface{
 	/** The list of URLs the user has bookmarked */
 	private List<String> urls = new ArrayList<>();
 	
+	private int urlCount;
+	
 	public Bookmark() {}
 	
 	public Bookmark(String name) {

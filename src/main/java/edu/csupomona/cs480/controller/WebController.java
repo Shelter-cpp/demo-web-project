@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.csupomona.cs480.Sheltercpp;
+import edu.csupomona.cs480.data.Admin;
 import edu.csupomona.cs480.data.Bookmark;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.provider.FSUserManager;
@@ -111,10 +112,12 @@ public class WebController {
 	 *
 	 * @param userId
 	 */
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.DELETE)
-	void deleteUser(
+	@RequestMapping(value = "/cs480/user/delete/{userId}", method = RequestMethod.GET)
+	User deleteUser(
 			@PathVariable("userId") String userId) {
+		User returnUser = userManager.getUser(userId);
 		userManager.deleteUser(userId);
+		return returnUser;
 	}
 
 	/**
@@ -175,6 +178,12 @@ public class WebController {
 		
 		String userInfo = userManager.getUser(username).toString();
 		return userInfo;
+	}
+	
+	@RequestMapping(value = "/admin/{password}/getall", method = RequestMethod.GET)
+	List<User> getAdminPage(@PathVariable("password") String password) {
+		Admin admin = new Admin(password);
+		return admin.getAllUsers();
 	}
 	
 	
