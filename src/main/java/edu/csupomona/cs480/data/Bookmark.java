@@ -62,6 +62,7 @@ public class Bookmark implements BookmarkInterface{
 	
 	/** Removes the url at the given index
 	 * Returns the number of urls remaining
+	 * ((we could possibly change the param to be the string name of the url))
 	 * @param index
 	 * @return 
 	 */
@@ -70,6 +71,7 @@ public class Bookmark implements BookmarkInterface{
 		return getUrlCount();
 	}
 	
+	//I don't think we will need this, we can just remove then add
 	public boolean changeUrl(int index,String newUrl) {
 		if(index < urls.size()){
 			urls.set(index, newUrl);
