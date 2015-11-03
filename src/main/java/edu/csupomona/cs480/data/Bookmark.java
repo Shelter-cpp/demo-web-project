@@ -80,6 +80,5 @@ public class Bookmark implements BookmarkInterface{
 		else {
 			return false;
 		}
-		
 	}
 }

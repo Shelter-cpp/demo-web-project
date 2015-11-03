@@ -144,6 +144,30 @@ public class WebController {
 		return modelAndView;
 	}
 	
+	/**
+	 * This is a test for inputing data into user 
+	 * 
+	 */
+	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
+	Bookmark listURLS() {
+		User user1 = new User("user1", "password1");
+		String testUrl1 = "www.google.com";
+		String testUrl2 = "www.facebook.com";
+		String testUrl3 = "www.github.com";
+		String testUrl4 = "www.youtube.com";
+		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
+		testBookmark1.addUrl(testUrl1);
+		testBookmark1.addUrl(testUrl2);
+		testBookmark1.addUrl(testUrl3);
+		testBookmark1.addUrl(testUrl4);
+		
+		user1.addBookmark(testBookmark1);
+		
+		userManager.updateUser(user1);
+		System.out.print("\n" + user1.getBookmark(0) +"\n");
+		return user1.getBookmark(0);
+	}
+	
 	/** 
 	 * Displays all of the information about the given user
 	 * 

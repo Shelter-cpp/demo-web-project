@@ -14,10 +14,13 @@ public class User implements UserInterface {
 
 	/** The unique user Id */
     private String username;
+    
     /** The user's password  */
     private String password;
+    
     /** The timestamp when the user is being created */
     private String creationTime = new Date(System.currentTimeMillis()).toString();
+    
     /** The list of bookmarks that the user has created */
     private List<Bookmark> bookmarks = new ArrayList<>();
     
