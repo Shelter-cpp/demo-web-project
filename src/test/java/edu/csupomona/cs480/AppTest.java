@@ -1,5 +1,7 @@
 package edu.csupomona.cs480;
 
+import org.junit.Assert;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -30,10 +32,10 @@ public class AppTest
 
     /**
      * Rigourous Test :-)
-     
+     */
+    @org.junit.Test
     public void testApp()
     {
-        //assertTrue( true );
-    		fail("just for test");
-    }*/
+         Assert.assertTrue(true);
+    }
 }
