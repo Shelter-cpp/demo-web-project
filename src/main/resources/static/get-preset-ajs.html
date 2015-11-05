@@ -4,6 +4,11 @@
 	    <title>Show Preset URLs using AngularJS</title>
 	    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 	    <script src="/js/get-preset-control-ajs.js"></script>
+	    <meta charset="utf-8" />
+ 	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   		<title>QuickTabs</title>
+    	<link rel="stylesheet" href="./foundation.css" />
+    	<script src="js/vendor/modernizr.js"></script>
 	</head>
 
 	<body ng-controller="GetPreset1Ctrl">
@@ -11,18 +16,43 @@
 	    <hr>
 
 	    <div>
-	        <div>
-	            <label>URL List</label>
-	            <table border="1">
-	                <tr>
-	                    <td>URL</td>
-	                </tr>
-
-	                <tr ng-repeat="url in presetitems">
-	                    <td>{{url}}</td>
-	                </tr>
-	            </table>
-	        </div>
+	    	    <div class="row">
+					<div class="large-12 columns">
+						<h3> Edit Preset </h3>
+						<p>
+					</div>
+				</div>
+				
+	       		<div class="row">
+	       			<div class="large-12 columns">
+		       			<table>
+						  <thead>
+						    <tr>
+						      <th width="150">URL List</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						      <tr ng-repeat="url in presetitems"> <!-- runs javascript to print urls -->
+		                   			<td>{{url}}</td>
+		               		  </tr>
+						  </tbody>
+						</table>
+		            
+			            <form>
+						  <div class="row collapse">
+							<div class="small-3 large-2 columns">
+							  <span class="prefix">http://</span>
+							</div>
+							<div class="small-9 large-10 columns">
+							  <input type="text" placeholder="Enter your URL...">
+							</div>
+							<div class="small-2 columns">
+        					  <a href="#" class="button postfix">Add</a>
+       						</div>
+						  </div>
+						</form>
+	            	</div>
+	       	 </div>
 
 	    </div>
 

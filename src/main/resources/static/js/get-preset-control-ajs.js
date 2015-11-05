@@ -7,7 +7,6 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
   $scope.loadUsers = function() {
 	  $http.get("preset1/list")
 	  	.success(function(data){
-	  		console.log("\nPrinting Data");
 	  		console.log(data);
 	  		$scope.presetitems = data;
 	  	});
