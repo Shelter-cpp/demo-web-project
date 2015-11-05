@@ -17,10 +17,14 @@
 	    	&nbsp;\
 	    	&nbsp;\
 	    	<ul class="stack button-group">\
-	    	<li><a href="#" class="button large" >Preset Button ' + count +'</a></li>\
+	    	<li><a href="#" class="button large" onClick="openUrls(' + count + ')" >Preset Button ' + count +'</a></li>\
 	    	<li><a href="#" class="button small">Edit Preset</a></li>\
 	    	</ul>\
 	    	</div>';
 
 	     document.getElementById('content').appendChild(div);
+  };
+  
+  function openUrls(index) {
+	  alert(index);
   };
