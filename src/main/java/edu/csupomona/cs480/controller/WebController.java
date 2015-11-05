@@ -149,7 +149,7 @@ public class WebController {
 	 * 
 	 */
 	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
-	Bookmark listURLS() {
+	List<String> listURLS() {
 		User user1 = new User("user1", "password1");
 		String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
@@ -165,7 +165,9 @@ public class WebController {
 		
 		userManager.updateUser(user1);
 		System.out.print("\n" + user1.getBookmark(0) +"\n");
-		return user1.getBookmark(0);
+		//should print list of urls in table, ****html doesn't load****
+		//ask how to make url take variables so we don't have to make 8 of them
+		return user1.getBookmark(0).getUrls();
 	}
 	
 	/** 
@@ -210,6 +212,13 @@ public class WebController {
 	List<User> getAdminPage(@PathVariable("password") String password) {
 		Admin admin = new Admin(password);
 		return admin.getAllUsers();
+	}
+	
+	@RequestMapping(value = "/levl/test/{input1}/get/{input2}", method = RequestMethod.GET)
+	void testTwo(
+			@PathVariable("input1") String name, @PathVariable("input2") String price) {
+		System.out.println(name + " " + price);
+		//return admin.getAllUsers();
 	}
 	
 	
