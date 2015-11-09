@@ -35,7 +35,7 @@
 						  <tbody>
 						      <tr ng-repeat="url in presetitems"> <!-- runs javascript to print urls -->
 		                   			<td>{{url}}</td>
-		                   			<td><a href="#" class="button tiny button alert" >Delete</a> </td>
+		                   			<td><a class="button tiny buton alert" ng-click="deleteUser(url)">Delete</a></td>
 		               		  </tr>
 						  </tbody>
 						</table>
@@ -45,7 +45,7 @@
 							<div class="small-3 large-2 columns">
 							  <span class="prefix">http://</span>
 							</div>
-							<div class="small-9 large-10 columns">
+							<div class="small-9 large-8 columns">
 							  <input type="text" placeholder="Enter your URL..." ng-model="newUrl">
 							</div>
 							<div class="small-2 columns">
@@ -53,6 +53,7 @@
        						</div>
 						  </div>
 						</form>
+	            	    <a href="index.html" class="button small" >Done</a> </tr>
 	            	</div>
 	       	 </div>
 
