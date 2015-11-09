@@ -108,7 +108,7 @@ public class WebController {
 		return user;
 	}
 	
-	@RequestMapping(value = "/cs480/user/{userId}/{bookmark}", method = RequestMethod.POST)
+	@RequestMapping(value = "/cs480/user/addUrl/{userId}/{bookmark}", method = RequestMethod.POST)
 	void addUrl(
 			@PathVariable("userId") String id,
 			@PathVariable("bookmark") String bookmarkIndex,
@@ -116,9 +116,19 @@ public class WebController {
 		User user = userManager.getUser(id);
 		user.getBookmark(Integer.parseInt(bookmarkIndex)).addUrl(newUrl);
 		userManager.updateUser(user);
-		User updatedUser = userManager.getUser(id);
+		System.out.println("Add url: " + newUrl);
 	}
 	
+	@RequestMapping(value = "/cs480/user/deleteUrl/{userId}/{bookmark}", method = RequestMethod.POST)
+	void deleteUrl(
+			@PathVariable("userId") String id,
+			@PathVariable("bookmark") String bookmarkIndex,
+			@RequestParam("urlIndex") String urlIndex) {
+		System.out.println("Delete index: " + urlIndex);
+		User user = userManager.getUser(id);
+		user.getBookmark(Integer.parseInt(bookmarkIndex)).remove(Integer.parseInt(urlIndex));
+		userManager.updateUser(user);
+	}
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.

@@ -13,7 +13,14 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
   }
   
   $scope.addUrl = function() {
-	  $http.post("cs480/user/" + "user1" + "/" + "0" + "?url=" + $scope.newUrl)
+	  $http.post("cs480/user/addUrl/" + "user1" + "/" + "0" + "?url=" + $scope.newUrl)
+	  	.success(function(data){
+	  		$scope.loadUsers();
+	  	});
+  }
+  
+  $scope.deleteUrl = function($index) {
+	  $http.post("cs480/user/deleteUrl/" + "user1" + "/" + "0" + "?urlIndex=" + $index)
 	  	.success(function(data){
 	  		$scope.loadUsers();
 	  	});

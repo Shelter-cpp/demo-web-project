@@ -33,9 +33,9 @@
 						    </tr>
 						  </thead>
 						  <tbody>
-						      <tr ng-repeat="url in presetitems"> <!-- runs javascript to print urls -->
+						      <tr ng-repeat="url in presetitems track by $index"> <!-- runs javascript to print urls -->
 		                   			<td>{{url}}</td>
-		                   			<td><a class="button tiny button alert" ng-click="deleteUser(url)">Delete</a></td>
+		                   			<td><a class="button tiny button alert" ng-click="deleteUrl($index)">Delete</a></td>
 		               		  </tr>
 						  </tbody>
 						</table>
