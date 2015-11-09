@@ -46,10 +46,10 @@
 							  <span class="prefix">http://</span>
 							</div>
 							<div class="small-9 large-10 columns">
-							  <input type="text" placeholder="Enter your URL...">
+							  <input type="text" placeholder="Enter your URL..." ng-model="newUrl">
 							</div>
 							<div class="small-2 columns">
-        					  <a href="#" class="button postfix">Add</a>
+        					  <button class="button postfix" ng-click=addUrl()>Add</button>
        						</div>
 						  </div>
 						</form>

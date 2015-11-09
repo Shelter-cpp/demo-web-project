@@ -108,6 +108,17 @@ public class WebController {
 		return user;
 	}
 	
+	@RequestMapping(value = "/cs480/user/{userId}/{bookmark}", method = RequestMethod.POST)
+	void addUrl(
+			@PathVariable("userId") String id,
+			@PathVariable("bookmark") String bookmarkIndex,
+			@RequestParam("url") String newUrl) {
+		User user = userManager.getUser(id);
+		user.getBookmark(Integer.parseInt(bookmarkIndex)).addUrl(newUrl);
+		userManager.updateUser(user);
+		User updatedUser = userManager.getUser(id);
+	}
+	
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.
@@ -150,7 +161,7 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
 	List<String> listURLS() {
-		User user1 = new User("user1", "password1");
+		/*User user1 = new User("user1", "password1");
 		String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";
@@ -164,10 +175,10 @@ public class WebController {
 		user1.addBookmark(testBookmark1);
 		
 		userManager.updateUser(user1);
-		System.out.print("\n" + user1.getUsername() + ": " + testBookmark1.getName() + ": " + user1.getBookmark(0).getUrls() +"\n");
+		System.out.print("\n" + user1.getUsername() + ": " + testBookmark1.getName() + ": " + user1.getBookmark(0).getUrls() +"\n");*/
 		//should print list of urls in table, ****html doesn't load****
 		//ask how to make url take variables so we don't have to make 8 of them
-		return user1.getBookmark(0).getUrls();
+		return userManager.getUser("user1").getBookmark(0).getUrls();
 	}
 	
 	/** 

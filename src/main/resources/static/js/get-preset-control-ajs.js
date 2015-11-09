@@ -11,6 +11,13 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	  		$scope.presetitems = data;
 	  	});
   }
+  
+  $scope.addUrl = function() {
+	  $http.post("cs480/user/" + "user1" + "/" + "0" + "?url=" + $scope.newUrl)
+	  	.success(function(data){
+	  		$scope.loadUsers();
+	  	});
+  }
 
   $scope.loadUsers();
 
