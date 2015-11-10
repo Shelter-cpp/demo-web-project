@@ -242,7 +242,7 @@ public class WebController {
 	
 	@RequestMapping(value = "/admin/{password}/getall", method = RequestMethod.GET)
 	List<User> getAdminPage(@PathVariable("password") String password) {
-		Admin admin = new Admin(password);
+		Admin admin = Admin.getInstance(password);
 		return admin.getAllUsers();
 	}
 	
