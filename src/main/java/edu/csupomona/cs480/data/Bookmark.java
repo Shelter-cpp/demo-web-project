@@ -3,7 +3,7 @@ package edu.csupomona.cs480.data;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Ignore;
+//import org.junit.Ignore;
 
 public class Bookmark implements BookmarkInterface{
 	
