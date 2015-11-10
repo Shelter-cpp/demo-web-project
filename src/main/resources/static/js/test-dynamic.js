@@ -14,8 +14,6 @@
 		  //do nothing
 	  }
 	  else {
-		 // window.location.href = "get-preset-ajs.html";
-		  
 		  div.className = 'large-3 small-3 columns end';
 
 		    div.innerHTML = '&nbsp;\
@@ -36,4 +34,10 @@
   
   function openUrls(name) {
 	  alert(name);
+  };
+  
+  //use angular
+  function getUrls(name) {
+	  //get a list of the urls from the user.bookmark
+	  //call openURLS by passing list of URLS to it
   };
