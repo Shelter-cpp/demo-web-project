@@ -171,7 +171,6 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
 	List<String> listURLS() {
-		User user1 = new User("user1", "password1");
 		/*String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";

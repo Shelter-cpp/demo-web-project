@@ -19,7 +19,7 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	  	});
   }
   
-  $scope.deleteUrl = function($index) {
+  $scope.deleteUrl = function() {
 	  $http.post("cs480/user/deleteUrl/" + "user1" + "/" + "0" + "?urlIndex=" + $index)
 	  	.success(function(data){
 	  		$scope.loadUsers();
