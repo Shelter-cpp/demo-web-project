@@ -4,6 +4,19 @@ var cs480App = angular.module('GetPreset1', []);
 
 cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 
+	function getQueryVariable(variable)
+	{
+	       var query = window.location.search.substring(1);
+	       var vars = query.split("&");
+	       for (var i=0;i<vars.length;i++) {
+	               var pair = vars[i].split("=");
+	               if(pair[0] == variable){
+	            	   return pair[1];
+	               }
+	       }
+	       return(false);
+	}
+	
   $scope.loadUsers = function() {
 	  $http.get("preset1/list")
 	  	.success(function(data){
@@ -11,24 +24,29 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	  		$scope.presetitems = data;
 	  	});
   }
-  $scope.loadUsers();
   
   $scope.addUrl = function() {
-	  $http.post("cs480/user/addUrl/" + "user1" + "/" + "0" + "?url=" + $scope.newUrl)
+	  $http.post("cs480/user/addUrl/" + $scope.user + "/" + $scope.bookmark + "?url=" + $scope.newUrl)
 	  	.success(function(data){
 	  		$scope.loadUsers();
 	  	});
   }
   
-  $scope.deleteUrl = function($index) {
-	  $http.post("cs480/user/deleteUrl/" + "user1" + "/" + "0" + "?urlIndex=" + $index)
+  $scope.deleteUrl = function(index) {
+	  $http.post("cs480/user/deleteUrl/" + $scope.user + "/" + $scope.bookmark + "?urlIndex=" + index)
 	  	.success(function(data){
 	  		$scope.loadUsers();
 	  	});
   }
-  
   $scope.deleteBookmark = function() {
 	 //deletes entire bookmark then loads index.html
 	  	});
   }
+
+  $scope.user = getQueryVariable("user");
+  $scope.bookmark = getQueryVariable("bookmark");
+  console.log($scope.user);
+  console.log($scope.bookmark);
+  $scope.loadUsers();
+
 });
