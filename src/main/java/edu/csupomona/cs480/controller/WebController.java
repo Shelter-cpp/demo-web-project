@@ -192,6 +192,16 @@ public class WebController {
 		return userManager.getUser("user1").getBookmark(0).getUrls();
 	}
 	
+	/* Does not work yet
+	@RequestMapping(value = "/preset1/pages", method = RequestMethod.GET)
+	List<String> listPages() {
+		//User user1 = new User("user1", "password1");
+		
+		//ask how to make url take variables so we don't have to make 8 of them
+		System.out.println(userManager.getUser("user1").getBookmark(0).getUrls());
+		return userManager.getUser("user1").getBookmark(0).getUrls();
+	}*/
+	
 	/** 
 	 * Displays all of the information about the given user
 	 * 
