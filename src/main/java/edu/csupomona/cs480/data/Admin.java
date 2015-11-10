@@ -6,19 +6,29 @@ import edu.csupomona.cs480.data.provider.*;
 
 public class Admin {
 	
-	String username = "Admin";
-	String password;
-	UserManager manager = new FSUserManager();
+	private static Admin staticAdmin;
+	private String username = "Admin";
+	private static String password = "password";
+	private UserManager manager = new FSUserManager();
 	
-	public Admin(String password) {
-		this.password = password;
+	//Admin instance is obtained using the static getInstance method
+	private Admin() {
+	}
+	
+	//uses Singleton pattern to allow only one Admin class
+	public static Admin getInstance(String password) {
+		//lazy instantiation
+		if(staticAdmin == null && checkPassword(password)) {
+			staticAdmin = new Admin();
+		}
+		return staticAdmin;
 	}
 	
 	public List<User> getAllUsers() {
 		return manager.listAllUsers();
 	}
 	
-	public boolean checkPassword(String testPassword) {
+	public static boolean checkPassword(String testPassword) {
 		return password.equals(testPassword);
 	}
 }

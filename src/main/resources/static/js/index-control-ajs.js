@@ -10,9 +10,9 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		  return (function() {
 			  return count++;
 		  })
-	  })();
+	})();
 	
-  $scope.addBookmark = function() {
+    $scope.addBookmark = function() {
 	  var count = increment();
 	  var div = document.createElement('div');
 
@@ -29,13 +29,18 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		    </div>';
 
 	  document.getElementById('content').appendChild(div);
-	  
-	  $http.post("cs480/user/" + "user1" + "/" + count + "?bookmark=" + $scope.newBookmark)
-	  	.success(function(data){
+  	} 
+  
+	$http.post("cs480/user/" + "user1" + "/" + count + "?bookmark=" + $scope.newBookmark)
+		.success(function(data){
 	  		$scope.loadUsers();
-	  	});
-  }
-
-  $scope.loadUsers();
+	});
+	
+	$scope.loadPages = function() {
+		  $http.get("preset1/pages")
+		  	.success(function(data){
+		  		$scope.pageitems = data;
+		  	});
+	  }
 
 });
