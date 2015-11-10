@@ -25,7 +25,4 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	  		$scope.loadUsers();
 	  	});
   }
-
-  $scope.loadUsers();
-
 });
