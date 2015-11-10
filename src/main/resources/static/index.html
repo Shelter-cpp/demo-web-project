@@ -1,73 +1,74 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<!-- <html class="no-js" lang="en">-->
+<html ng-app="AddBookmark">
   <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="/js/index-control-ajs.js"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>QuickTabs</title>
     <link rel="stylesheet" href="./foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
-  <body>
+  <body ng-controller="AddBookmarkCtrl">
+  
     <div class="row">
         <div class="large-12 columns">
-     
-         
+        
+ <!-- Topbar, login/logout  -->        
           <div class="row">
             <div class="large-12 columns">
-     
               <nav class="top-bar" data-topbar>
-                <ul class="right">
-                   
+              	<ul class="left">
                   <li class="name">
                     <h1>
-                      <a href="#">
-                        Log Off
-                      </a>
+                    	<a href="#"> Guest Login</a>
                     </h1>
                   </li>
                   <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
-                </ul>
-             
-                
-              </nav>
-               
+                </ul> 
+                <ul class="right">
+                  <li class="name">
+                    <h1>
+                      <a href="#">Log Off</a>
+                    </h1>
+                  </li>
+                  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                </ul> 
+              </nav>  
             </div>
           </div>
+<!-- ----------------------- -->
+
 		  
+<!-- Create new Bookmark bar -->		  
 		  <div class="row">
 			 <div class="large-12 columns"><hr/>
-				<div class="row">
-				<div class="small-6 columns">
-				  <!--<a href="#">
-				  <div class="panel callout radius">
-				  
-					<h6>Create new preset</h6>
-				  </div>
-				  </a>-->
-				  <a href="#" class="button expand button secondary">Create new Preset</a>
-				</div>
-				  <div class="small-6 columns">
-				  <!--<a href="#">
-				  <div class="panel callout radius">
-					<h6>Create new bookmark</h6>
-				  </div>
-				  </a>-->	
-				  <a href="#" class="button expand button secondary">Create new Bookmark</a>				  
-				  </div>
-		 
-				  <!--<div class="large-4 columns">
-				  <a href="#">
-				  <div class="panel callout radius">
-					<h6>99  items in your cart</h6>
-				  </div>
-				  </a>
-				  </div>-->
-				</div>
+					<!--<div class="small-6 columns">
+					    <a href="#" class="button expand button secondary">Create new Preset</a>
+					</div>
+					 <div class="small-6 columns">
+					    <a href="#" class="button expand button secondary">Create new Bookmark</a>				  
+					</div>-->
+					<form>
+						<div class="row collapse">
+							<div class="small-3 large-2 columns">
+							  <span class="prefix"></span>
+							</div>
+							<div class="small-9 large-8 columns">
+							  <input type="text" placeholder="Enter New Bookmark Name (Home, Work, etc)" ng-model="newBookmark">
+							</div>
+							<div class="small-2 columns">
+        					  <button class="button postfix" ng-click=addBookmark()>Create</button>
+       						</div>
+						</div>
+					</form>
 			 </div>
 		 </div>
+<!-- --------------------- -->     
      
-         
      
+<!-- Logo/moto -------------->     
           <div class="row">
      
             <div class="large-2 small-3 columns">
@@ -76,12 +77,12 @@
                    
               <div class="hide-for-small panel">
                 <h4>QuickTabs</h4>
-                <h5 class="subheader">All of your bookmarks. Anywhere. Anytime.
-                </h5>
+                <h5 class="subheader">All of your bookmarks. Anywhere. Anytime.</h5>
               </div>
             </div>                        
-     
+<!-- -------------------- -->     
 		  
+<!-- Bookmarks (Might be changed to work with javascript) -->		  
 		    <div class="large-10 small-8 columns">
               <div class="row">
 			    <div class="large-3 small-3 columns">
@@ -158,10 +159,10 @@
 				</div>
 			  </div>
             </div>
-     
+<!-- -------------------- -->     
      
          
-     
+<!-- Copyright/bottom bar -->     
           <footer class="row">
             <div class="large-12 columns"><hr/>
               <div class="row">
@@ -178,17 +179,15 @@
                     <li><a href="#">Link 4</a></li>
                   </ul>
                 </div>
-     
               </div>
             </div>
           </footer>
-     
-         
-     
-        </div>
+<!-- -------------------- -->     
+      
+        </div> <!-- This </div> is here so the Logo and Bookmarks to align-->
+        
       </div>
+    </div>  
     
-
-
   </body>
 </html>
