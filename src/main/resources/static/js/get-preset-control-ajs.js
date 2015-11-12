@@ -38,10 +38,10 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	  		$scope.loadUsers();
 	  	});
   }
-  $scope.deleteBookmark = function() {
+  /*$scope.deleteBookmark = function() {
 	 //deletes entire bookmark then loads index.html
 	  	});
-  }
+  }*/
 
   $scope.user = getQueryVariable("user");
   $scope.bookmark = getQueryVariable("bookmark");
