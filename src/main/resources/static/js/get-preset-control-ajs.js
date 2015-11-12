@@ -28,6 +28,7 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
   $scope.addUrl = function() {
 	  $http.post("cs480/user/addUrl/" + $scope.user + "/" + $scope.bookmark + "?url=" + $scope.newUrl)
 	  	.success(function(data){
+	  		console.log("Added url: " + $scope.newUrl);
 	  		$scope.loadUrls();
 	  	});
   }
@@ -35,6 +36,7 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
   $scope.deleteUrl = function(index) {
 	  $http.post("cs480/user/deleteUrl/" + $scope.user + "/" + $scope.bookmark + "?urlIndex=" + index)
 	  	.success(function(data){
+	  		console.log("Deleted url at index: " + index);
 	  		$scope.loadUrls();
 	  	});
   }
