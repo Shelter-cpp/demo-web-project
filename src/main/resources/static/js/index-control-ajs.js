@@ -34,6 +34,7 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		  	});
 	  }
 	
+	/*Does not work - Alex
 	$scope.addPreset1 = function() {
 		alert('alert');
 		$http.get("cs480/users/list").success(function(data) {
@@ -77,6 +78,7 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		  //get a list of the urls from the user.bookmark
 		  //call openURLS by passing list of URLS to it
 	}
+	*/
 
 	$scope.loadUsers();
 });
