@@ -16,26 +16,26 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
 	       }
 	       return(false);
 	}
-	
-  $scope.loadUsers = function() {
-	  $http.get("preset1/list")
+	//actually loads url's not users
+  $scope.loadUrls = function() {
+	  $http.get("loadUrls/" + $scope.user + "/" + $scope.bookmark)
 	  	.success(function(data){
 	  		console.log(data);
-	  		$scope.presetitems = data;
+	  		$scope.urls = data;
 	  	});
   }
   
   $scope.addUrl = function() {
 	  $http.post("cs480/user/addUrl/" + $scope.user + "/" + $scope.bookmark + "?url=" + $scope.newUrl)
 	  	.success(function(data){
-	  		$scope.loadUsers();
+	  		$scope.loadUrls();
 	  	});
   }
   
   $scope.deleteUrl = function(index) {
 	  $http.post("cs480/user/deleteUrl/" + $scope.user + "/" + $scope.bookmark + "?urlIndex=" + index)
 	  	.success(function(data){
-	  		$scope.loadUsers();
+	  		$scope.loadUrls();
 	  	});
   }
   /*$scope.deleteBookmark = function() {
@@ -47,6 +47,6 @@ cs480App.controller('GetPreset1Ctrl', function ($scope, $http) {
   $scope.bookmark = getQueryVariable("bookmark");
   console.log($scope.user);
   console.log($scope.bookmark);
-  $scope.loadUsers();
+  $scope.loadUrls();
 
 });

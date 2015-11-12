@@ -166,8 +166,10 @@ public class WebController {
 	 * This is a test for inputing data into user 
 	 * 
 	 */
-	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
-	List<String> listURLS() {
+	@RequestMapping(value = "/loadUrls/{userId}/{bookmark}", method = RequestMethod.GET)
+	List<String> listURLS(
+			@PathVariable("userId") String userId,
+			@PathVariable("bookmark") String bookmark) {
 		/*User user1 = new User("user1", "password");
 		String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
@@ -186,7 +188,7 @@ public class WebController {
 		*/
 		//should print list of urls in table, ****html doesn't load****
 		//ask how to make url take variables so we don't have to make 8 of them
-		return userManager.getUser("user1").getBookmark(0).getUrls();
+		return userManager.getUser(userId).getBookmark(Integer.parseInt(bookmark)).getUrls();
 	}
 	
 	/* Does not work yet
