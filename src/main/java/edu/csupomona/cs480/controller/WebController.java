@@ -41,9 +41,6 @@ public class WebController {
 	 */
 	@Autowired
 	private UserManager userManager;
-	@Autowired
-	private FSUserManager testManager;
-	
 
 	/**
 	 * This is a simple example of how the HTTP API works.
@@ -171,7 +168,8 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/preset1/list", method = RequestMethod.GET)
 	List<String> listURLS() {
-		/*String testUrl1 = "www.google.com";
+		User user1 = new User("user1", "password");
+		String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";
 		String testUrl4 = "www.youtube.com";
@@ -185,7 +183,7 @@ public class WebController {
 		
 		userManager.updateUser(user1);
 		System.out.print("\n" + user1.getUsername() + ": " + testBookmark1.getName() + ": " + user1.getBookmark(0).getUrls() +"\n");
-		*/
+		
 		//should print list of urls in table, ****html doesn't load****
 		//ask how to make url take variables so we don't have to make 8 of them
 		return userManager.getUser("user1").getBookmark(0).getUrls();
@@ -252,6 +250,16 @@ public class WebController {
 		//return admin.getAllUsers();
 	}
 	
+	/*Does not work yet, work on this later  - Alex
+	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.POST)
+	int addBookmarkToUser(@PathVariable("user") String username,@PathVariable("bookmarkName") String bookmarkName) {
+		User user = userManager.getUser(username);
+		user.addBookmark(new Bookmark(bookmarkName));
+		userManager.updateUser(user);
+		System.out.println(user.getBookmarkCount());
+		return user.getBookmarkCount();
+	}
+	*/
 	
 	/**
 	 * This API tests to see if Alex knows what he is doing.

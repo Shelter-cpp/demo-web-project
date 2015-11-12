@@ -1,13 +1,4 @@
-  var increment = (function() {
-	  var count = 1;
-	  
-	  return (function() {
-		  return count++;
-	  })
-  })();
-
   function addPreset() {
-	  var count = increment();
 	  var div = document.createElement('div');
 	  var presetName = document.getElementById('presetName').value;
 	  if(presetName == "") {
@@ -22,12 +13,16 @@
 		    	&nbsp;\
 		    	<ul class="stack button-group">\
 		    	<li><a href="#" class="button large" onClick="openUrls(' + presetName + ')" >' + presetName +'</a></li>\
-		    	<li><a href="#" class="button small">Edit</a></li>\
+		    	<li><a href="get-preset-ajs.html" class="button small">Edit</a></li>\
 		    	</ul>\
 		    	</div>';
 
 		     document.getElementById('content').appendChild(div);
-		     
+		     /*Does not work yet, work on this later - Alex
+		     $http.post("user1/addBookmark/" + presetName).success(function(data) {
+		    	 console.log(data);
+		     });
+		     */
 	  }
 	    
   };
