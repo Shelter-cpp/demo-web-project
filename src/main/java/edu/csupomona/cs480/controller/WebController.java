@@ -105,10 +105,10 @@ public class WebController {
 		return user;
 	}
 	
-	@RequestMapping(value = "/cs480/user/addUrl/{userId}/{bookmark}", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit-bookmark-ajs/addUrl", method = RequestMethod.POST)
 	void addUrl(
-			@PathVariable("userId") String id,
-			@PathVariable("bookmark") String bookmarkIndex,
+			@RequestParam("userId") String id,
+			@RequestParam("bookmarkIndex") String bookmarkIndex,
 			@RequestParam("url") String newUrl) {
 		User user = userManager.getUser(id);
 		user.getBookmark(Integer.parseInt(bookmarkIndex)).addUrl(newUrl);
@@ -116,15 +116,15 @@ public class WebController {
 		System.out.println("Add url: " + newUrl);
 	}
 	
-	@RequestMapping(value = "/cs480/user/deleteUrl/{userId}/{bookmark}", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit-bookmark-ajs/deleteUrl", method = RequestMethod.POST)
 	void deleteUrl(
-			@PathVariable("userId") String id,
-			@PathVariable("bookmark") String bookmarkIndex,
+			@RequestParam("userId") String id,
+			@RequestParam("bookmarkIndex") String bookmarkIndex,
 			@RequestParam("urlIndex") String urlIndex) {
-		System.out.println("Delete index: " + urlIndex);
 		User user = userManager.getUser(id);
 		user.getBookmark(Integer.parseInt(bookmarkIndex)).remove(Integer.parseInt(urlIndex));
 		userManager.updateUser(user);
+		System.out.println("Delete url at index: " + urlIndex);
 	}
 
 	/**
@@ -166,29 +166,11 @@ public class WebController {
 	 * This is a test for inputing data into user 
 	 * 
 	 */
-	@RequestMapping(value = "/loadUrls/{userId}/{bookmark}", method = RequestMethod.GET)
+	@RequestMapping(value = "/loadUrls/", method = RequestMethod.POST)
 	List<String> listURLS(
-			@PathVariable("userId") String userId,
-			@PathVariable("bookmark") String bookmark) {
-		/*User user1 = new User("user1", "password");
-		String testUrl1 = "www.google.com";
-		String testUrl2 = "www.facebook.com";
-		String testUrl3 = "www.github.com";
-		String testUrl4 = "www.youtube.com";
-		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
-		testBookmark1.addUrl(testUrl1);
-		testBookmark1.addUrl(testUrl2);
-		testBookmark1.addUrl(testUrl3);
-		testBookmark1.addUrl(testUrl4);
-		
-		user1.addBookmark(testBookmark1);
-		
-		userManager.updateUser(user1);
-		System.out.print("\n" + user1.getUsername() + ": " + testBookmark1.getName() + ": " + user1.getBookmark(0).getUrls() +"\n");
-		*/
-		//should print list of urls in table, ****html doesn't load****
-		//ask how to make url take variables so we don't have to make 8 of them
-		return userManager.getUser(userId).getBookmark(Integer.parseInt(bookmark)).getUrls();
+			@RequestParam("userId") String userId,
+			@RequestParam("bookmarkIndex") String bookmarkIndex) {
+		return userManager.getUser(userId).getBookmark(Integer.parseInt(bookmarkIndex)).getUrls();
 	}
 	
 	/* Does not work yet
