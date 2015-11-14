@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
   </head>
-  <body ng-controller="AddBookmarkCtrl">
+  <body ng-controller="AddBookmarkCtrl" id="divID">
   
     <div class="row">
         <div class="large-12 columns">
@@ -79,9 +79,9 @@
 		    <div class="large-10 small-8 columns">
               <div class="row" id="content">
 			    <div class="large-3 small-3 columns">
-					<ul class="stack button-group">
-					<li><a href="#" class="button large" >Preset Button 1</a></li>
-					<li><a href="get-preset-ajs.html?user=user1&bookmark=0" class="button small">Edit</a></li>
+					<ul class="stack button-group"> <!-- should track openUrls($index) with index when available -->
+					  <li><a href="#" class="button large" ng-click="openUrls()">Preset Button 1</a></li>
+					  <li><a href="get-preset-ajs.html?user=user1&bookmark=0" class="button small">Edit</a></li>
 					</ul>
                 </div>
      

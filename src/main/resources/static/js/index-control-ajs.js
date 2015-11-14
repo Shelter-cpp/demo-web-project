@@ -22,17 +22,25 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 	  document.getElementById('content').appendChild(div);
   	}
   
+    /*
 	$http.post("cs480/user/" + "user1" + "/" + count + "?bookmark=" + $scope.newBookmark)
 		.success(function(data){
 	  		$scope.loadUsers();
-	})
+	})*/
 	
-	$scope.loadPages = function() {
-		  $http.get("preset1/pages")
-		  	.success(function(data){
-		  		$scope.pageitems = data;
-		  	});
-	  }
+    /* Cannot test yet because create/add bookmark is not done yet, will use index to get correct bookmarks
+	$scope.openUrls = function(){
+		$http.get("loadUrls/" + $scope.user + "/" + $scope.bookmark)
+		  .success(function(data){
+			  console.log(" inside .success " + data);
+			  $scope.links = data;
+			  //might have to move forEach loop into here
+		  });
+		console.log("\n outside .success " + data)
+		angular.forEach($scope.links, link {
+			$window.open("link.html/?" + link, '_blank');
+		}
+	}*/
 	
 	/*Does not work - Alex
 	$scope.addPreset1 = function() {
@@ -81,5 +89,6 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 	*/
 
 	$scope.loadUsers();
+	$scope.loadPages();
 });
 
