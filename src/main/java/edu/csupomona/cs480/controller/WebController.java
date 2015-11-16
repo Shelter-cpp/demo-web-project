@@ -15,7 +15,9 @@ import com.google.common.base.MoreObjects;
 import edu.csupomona.cs480.Sheltercpp;
 import edu.csupomona.cs480.data.Admin;
 import edu.csupomona.cs480.data.Bookmark;
+import edu.csupomona.cs480.data.BookmarkBuilder;
 import edu.csupomona.cs480.data.User;
+import edu.csupomona.cs480.data.UserBuilder;
 import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 
@@ -191,30 +193,15 @@ public class WebController {
 	 */
 	@RequestMapping(value = "/get/{username}", method = RequestMethod.GET)
 	String getUserInfo(@PathVariable("username") String username) {
-		User newUser = new User(username, "password");
 		String testUrl1 = "www.google.com";
 		String testUrl2 = "www.facebook.com";
 		String testUrl3 = "www.github.com";
 		String testUrl4 = "www.youtube.com";
-		Bookmark testBookmark1 = new Bookmark("Bookmark 1");
-		testBookmark1.addUrl(testUrl1);
-		testBookmark1.addUrl(testUrl2);
-		testBookmark1.addUrl(testUrl3);
-		testBookmark1.addUrl(testUrl4);
-		Bookmark testBookmark2 = new Bookmark("Bookmark 2");
-		testBookmark2.addUrl(testUrl2);
-		testBookmark2.addUrl(testUrl3);
-		Bookmark testBookmark3 = new Bookmark("Bookmark 3");
-		testBookmark3.addUrl(testUrl1);
-		testBookmark3.addUrl(testUrl2);
-		testBookmark3.addUrl(testUrl3);
-		Bookmark testBookmark4 = new Bookmark("Bookmark 4");
-		testBookmark4.addUrl(testUrl1);
-		testBookmark4.addUrl(testUrl4);
-		newUser.addBookmark(testBookmark1);
-		newUser.addBookmark(testBookmark2);
-		newUser.addBookmark(testBookmark3);
-		newUser.addBookmark(testBookmark4);
+		Bookmark testBookmark1 = new BookmarkBuilder().name("Bookmark 1").url(testUrl1).url(testUrl2).url(testUrl3).url(testUrl4).build();
+		Bookmark testBookmark2 = new BookmarkBuilder().name("Bookmark 2").url(testUrl2).url(testUrl3).build();
+		Bookmark testBookmark3 = new BookmarkBuilder().name("Bookmark 3").url(testUrl1).url(testUrl2).url(testUrl3).build();
+		Bookmark testBookmark4 = new BookmarkBuilder().name("Bookmark 4").url(testUrl1).url(testUrl4).build();
+		User newUser = new UserBuilder().username(username).password("password").bookmark(testBookmark1).bookmark(testBookmark2).bookmark(testBookmark3).bookmark(testBookmark4).build();
 		userManager.updateUser(newUser);
 		
 		String userInfo = userManager.getUser(username).toString();
