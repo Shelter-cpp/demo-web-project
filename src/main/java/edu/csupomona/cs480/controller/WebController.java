@@ -107,6 +107,7 @@ public class WebController {
 		return user;
 	}
 	
+	//a comment edit to test automatic deployment
 	@RequestMapping(value = "/edit-bookmark-ajs/addUrl", method = RequestMethod.POST)
 	void addUrl(
 			@RequestParam("userId") String id,
