@@ -64,6 +64,16 @@ public class User implements UserInterface {
 	public List<Bookmark> getBookmarks() {
 		return bookmarks;
 	}
+	
+	public List<String> getBookmarkNames()
+	{
+		List<String> temp = new ArrayList<>();
+		for(int i=0; i<bookmarks.size(); i++)
+		{
+			temp.add(bookmarks.get(i).getName());
+		}
+		return temp;
+	}
 
 	public String getCreationTime() {
 		return creationTime;

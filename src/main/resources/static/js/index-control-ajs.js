@@ -3,6 +3,20 @@
 var cs480App = angular.module('AddBookmark', []);
 
 cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
+	
+	function getQueryVariable(variable)
+	{
+		var query = window.location.search.substring(1);
+		var vars = query.split("&");
+		for (var i=0;i<vars.length;i++) {
+			var pair = vars[i].split("=");
+			if(pair[0] == variable){
+				return pair[1];
+			}
+		}
+		return(false);
+	}
+	
 	//change to a get function to the user for the bookmark count
 	var increment = (function() {
 		//TODO - initialize count with the number of bookmarks the user already has
@@ -29,12 +43,10 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		
 	}
 	*/
-	
-	
-	
+
 	
 	$scope.initializeUser = function(username) {
-		var bookmarkCount = getUserBookmarkCount(username);
+		var bookmarkCount = $scope.getUserBookmarkCount(username);
 		
 	}
 	
@@ -70,6 +82,36 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 			    });   
 		}  
 	}
+	
+	$scope.loadBookmarks = function() {
+		  $http.post("loadBookmarks/?userId=user1")
+		  	.success(function(data){
+		  		console.log(data);
+		  		$scope.bookmarks = data;
+		  		var div = document.createElement('div');
+		  		//for loop to create buttons on load
+		  		for(var i=0;i<$scope.bookmarks.length;i++) {
+		  			div = document.createElement('div');
+		  			console.log(i+"\n");
+		  			div.className = 'large-3 small-3 columns end';
+					div.innerHTML = '&nbsp;\
+						&nbsp;\
+						&nbsp;\
+					    &nbsp;\
+						<ul class="stack button-group">\
+					    <li><a href="#" class="button large" onClick="getUrls(' + $scope.bookmarks[i] + ')" >' + $scope.bookmarks[i] +'</a></li>\
+					    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + i +'" class="button small">Edit</a></li>\
+					    </ul>\
+					    </div>';
+					document.getElementById('content').appendChild(div);  
+		  		}
+
+		  		
+		  	});
+	  }
+	
+	$scope.userId = getQueryVariable("userId");
+	$scope.loadBookmarks();
 
 });
 

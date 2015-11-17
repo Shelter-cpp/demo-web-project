@@ -176,6 +176,12 @@ public class WebController {
 		return userManager.getUser(userId).getBookmark(Integer.parseInt(bookmarkIndex)).getUrls();
 	}
 	
+	@RequestMapping(value = "/loadBookmarks/", method = RequestMethod.POST)
+	List<String> listBookmarks(
+			@RequestParam("userId") String userId) {
+		return userManager.getUser(userId).getBookmarkNames();
+	}
+	
 	/* Does not work yet
 	@RequestMapping(value = "/preset1/pages", method = RequestMethod.GET)
 	List<String> listPages() {
@@ -225,12 +231,12 @@ public class WebController {
 	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.GET)
 	int addBookmarkToUser(@PathVariable("user") String username,@PathVariable("bookmarkName") String bookmarkName) {
 		User user = userManager.getUser(username);
-		Bookmark tempBookmark = new BookmarkBuilder().name("TempBookmark").url("temp.com").build();
+		Bookmark tempBookmark = new BookmarkBuilder().name(bookmarkName).build();
 		//user.addBookmark(new Bookmark(bookmarkName));
 		
 		user.addBookmark(tempBookmark);
-		
 		userManager.updateUser(user);
+		
 		System.out.println(user.getBookmarkCount());
 		return user.getBookmarkCount();
 	}
@@ -239,6 +245,7 @@ public class WebController {
 	int getBookmarkCount(@PathVariable("user") String username) {
 		return userManager.getUser(username).getBookmarkCount();
 	}
+	
 	
 	/**
 	 * This API tests to see if Alex knows what he is doing.
