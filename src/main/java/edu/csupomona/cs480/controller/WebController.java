@@ -222,16 +222,23 @@ public class WebController {
 		//return admin.getAllUsers();
 	}
 	
-	/*Does not work yet, work on this later  - Alex
-	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.POST)
+	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.GET)
 	int addBookmarkToUser(@PathVariable("user") String username,@PathVariable("bookmarkName") String bookmarkName) {
 		User user = userManager.getUser(username);
-		user.addBookmark(new Bookmark(bookmarkName));
+		Bookmark tempBookmark = new BookmarkBuilder().name("TempBookmark").url("temp.com").build();
+		//user.addBookmark(new Bookmark(bookmarkName));
+		
+		user.addBookmark(tempBookmark);
+		
 		userManager.updateUser(user);
 		System.out.println(user.getBookmarkCount());
 		return user.getBookmarkCount();
 	}
-	*/
+	
+	@RequestMapping(value = "{user}/getBookmarkCount/", method = RequestMethod.GET)
+	int getBookmarkCount(@PathVariable("user") String username) {
+		return userManager.getUser(username).getBookmarkCount();
+	}
 	
 	/**
 	 * This API tests to see if Alex knows what he is doing.
