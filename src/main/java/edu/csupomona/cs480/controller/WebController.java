@@ -129,6 +129,16 @@ public class WebController {
 		userManager.updateUser(user);
 		System.out.println("Delete url at index: " + urlIndex);
 	}
+	
+	@RequestMapping(value = "/edit-bookmark-ajs/deleteBookmark", method = RequestMethod.POST)
+	void deleteBookmark(
+			@RequestParam("userId") String id,
+			@RequestParam("bookmarkIndex") String bookmarkIndex) {
+		User user = userManager.getUser(id);
+		user.deleteBookmark(Integer.parseInt(bookmarkIndex));
+		userManager.updateUser(user);
+		System.out.println("Delete bookmark at index: " + bookmarkIndex);
+	}
 
 	/**
 	 * This API deletes the user. It uses HTTP DELETE method.

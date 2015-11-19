@@ -40,10 +40,12 @@ cs480App.controller('EditBookmarkCtrl', function ($scope, $http) {
 	  		$scope.loadUrls();
 	  	});
   }
-  /*$scope.deleteBookmark = function() {
-	 //deletes entire bookmark then loads index.html
+  $scope.deleteBookmark = function() {
+	  $http.post("edit-bookmark-ajs/deleteBookmark/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
+	  	.success(function(data){
+	  		console.log("Deleted bookmark at index: " + $scope.bookmarkIndex);
 	  	});
-  }*/
+  }
 
   $scope.userId = getQueryVariable("userId");
   $scope.bookmarkIndex = getQueryVariable("bookmarkIndex");
