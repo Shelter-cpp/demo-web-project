@@ -40,6 +40,7 @@ cs480App.controller('EditBookmarkCtrl', function ($scope, $http) {
 	  		$scope.loadUrls();
 	  	});
   }
+  
   $scope.deleteBookmark = function() {
 	  $http.post("edit-bookmark-ajs/deleteBookmark/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
 	  	.success(function(data){

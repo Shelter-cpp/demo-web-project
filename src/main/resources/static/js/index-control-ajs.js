@@ -17,22 +17,22 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		return(false);
 	}
 	
-    //Cannot test yet because create/add bookmark is not done yet, will use index to get correct bookmarks
-	/*
-	$scope.openUrls = function(){
-		$http.get("loadUrls/" + $scope.user + "/" + $scope.bookmark)
-		  .success(function(data){
-			  console.log(" inside .success " + data);
-			  $scope.links = data;
-			  //might have to move forEach loop into here
-		  });
+/*
+	$scope.openUrls = function(index){
+		console.log("in openUrls");
+		//$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + index)
+		$http.post("loadUrls/?userId=" + "user1" + "&bookmarkIndex=" + index)
+	  	.success(function(data){
+	  		console.log(data);
+	  		$scope.urls = data;		
+	  	});
 		console.log("\n outside .success " + data)
 		angular.forEach($scope.links, link {
 			$window.open("link.html/?" + link, '_blank');
 		}
 		
-	}
-	*/
+	}*/
+	
 	
 	//basically I combined the getBookmarkCount(username) and addPreset()
 	//functions because scoping was an issue, but probably not good practice
@@ -55,7 +55,7 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 					&nbsp;\
 				    &nbsp;\
 					<ul class="stack button-group">\
-				    <li><a href="#" class="button large" onClick="getUrls(' + presetName + ')" >' + presetName +'</a></li>\
+				    <li><a targe="_blank" href="open-urls-ajs.html?userId=user1&bookmarkIndex=' + num + '" class="button large" ng-click="openUrls(' + num + ')" >' + presetName +'</a></li>\
 				    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + num +'" class="button small">Edit</a></li>\
 				    </ul>\
 				    </div>';
@@ -84,7 +84,7 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 						&nbsp;\
 					    &nbsp;\
 						<ul class="stack button-group">\
-					    <li><a href="#" class="button large" onClick="getUrls(' + $scope.bookmarks[i] + ')" >' + $scope.bookmarks[i] +'</a></li>\
+					    <li><a target="_blank" href="open-urls-ajs.html?userId=user1&bookmarkIndex=' + i + '" class="button large" ng-click="openUrls(' + i + ')" >' + $scope.bookmarks[i] +'</a></li>\
 					    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + i +'" class="button small">Edit</a></li>\
 					    </ul>\
 					    </div>';
