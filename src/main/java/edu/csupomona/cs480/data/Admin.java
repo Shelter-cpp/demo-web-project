@@ -9,7 +9,7 @@ public class Admin {
 	private static Admin staticAdmin;
 	private String username = "Admin";
 	private static String password = "password";
-	private UserManager manager = new FSUserManager();
+	private UserManager manager = FSUserManager.getInstance();
 	
 	//Admin instance is obtained using the static getInstance method
 	private Admin() {

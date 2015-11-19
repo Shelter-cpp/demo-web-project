@@ -22,7 +22,7 @@ public class Sheltercpp {
      */
     @Bean
     public UserManager userManager() {
-        UserManager userManager = new FSUserManager();
+        UserManager userManager = FSUserManager.getInstance();
         return userManager;
     }
 

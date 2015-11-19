@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import edu.csupomona.cs480.data.Admin;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.UserMap;
 import edu.csupomona.cs480.util.ResourceResolver;
@@ -30,6 +31,20 @@ public class FSUserManager implements UserManager {
 	 * or Google tons of tutorials
 	 *
 	 */
+	private static FSUserManager staticFSUserManager;
+	
+	private FSUserManager(){
+		
+	}
+	
+	public static FSUserManager getInstance() {
+		//lazy instantiation
+		if(staticFSUserManager == null) {
+			staticFSUserManager = new FSUserManager();
+		}
+		return staticFSUserManager;
+	}
+	
 	private static final ObjectMapper JSON = new ObjectMapper();
 
 	/**
