@@ -17,16 +17,6 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		return(false);
 	}
 	
-	//change to a get function to the user for the bookmark count
-	var increment = (function() {
-		//TODO - initialize count with the number of bookmarks the user already has
-		  var count = 1;
-		  
-		  return (function() {
-			  return count++;
-		  })
-	  })();
-	
     //Cannot test yet because create/add bookmark is not done yet, will use index to get correct bookmarks
 	/*
 	$scope.openUrls = function(){
@@ -43,44 +33,39 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		
 	}
 	*/
-
 	
-	$scope.initializeUser = function(username) {
-		var bookmarkCount = $scope.getUserBookmarkCount(username);
-		
-	}
-	
-	$scope.getUserBookmarkCount = function(username) {
-		$http.get(username + "/getBookmarkCount/").success(function(data) {
-			return data;
-		});
-		
-	}
-	
+	//basically I combined the getBookmarkCount(username) and addPreset()
+	//functions because scoping was an issue, but probably not good practice
 	$scope.addPreset = function() {
-		
-		var count = increment();
-		var div = document.createElement('div');
-		var presetName = document.getElementById('presetName').value;
-		if(presetName == "") {
-			//do nothing
-		}
-		else {
-			div.className = 'large-3 small-3 columns end';
-			div.innerHTML = '&nbsp;\
-				&nbsp;\
-				&nbsp;\
-			    &nbsp;\
-				<ul class="stack button-group">\
-			    <li><a href="#" class="button large" onClick="getUrls(' + presetName + ')" >' + presetName +'</a></li>\
-			    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + 0 +'" class="button small">Edit</a></li>\
-			    </ul>\
-			    </div>';
-			document.getElementById('content').appendChild(div);
-			$http.get("user1/addBookmark/" + presetName).success(function(data) {
-				console.log(data);
-			    });   
-		}  
+		//username needs to be dynamic
+		var username = "user1";
+		$http.get(username + "/getBookmarkCount/")
+			.success(function(num) {
+				console.log(num);
+				
+			var div = document.createElement('div');
+			var presetName = document.getElementById('presetName').value;
+			if(presetName == "") {
+				//do nothing
+			}
+			else {
+				div.className = 'large-3 small-3 columns end';
+				div.innerHTML = '&nbsp;\
+					&nbsp;\
+					&nbsp;\
+				    &nbsp;\
+					<ul class="stack button-group">\
+				    <li><a href="#" class="button large" onClick="getUrls(' + presetName + ')" >' + presetName +'</a></li>\
+				    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + num +'" class="button small">Edit</a></li>\
+				    </ul>\
+				    </div>';
+				document.getElementById('content').appendChild(div);
+				
+				$http.get("user1/addBookmark/" + presetName).success(function(data) {
+					console.log(data);
+				    });   
+			}
+		});
 	}
 	
 	$scope.loadBookmarks = function() {
