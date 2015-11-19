@@ -22,19 +22,25 @@ cs480App.controller('OpenUrlsCtrl', function ($scope, $http) {
 		//$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + index)
 		$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
 	  	.success(function(data){
-	  		console.log(data);
-	  		$scope.urls = data;		
+	  		console.log(data);	
+	  		for(var i=0; i<data.length; i++){
+	  			console.log(data[i] + "\n");
+	  			window.open("http://" + data[i]);
+	  			//window.open("link.html/?" + data[i], '_blank');
+	  			/*var url = data[i];
+				var link = angular.element('<a href="' + url + '" target="_blank"></a>');
+				console.log("link to open: "+link);
+				 
+				angular.element(document.body).append(link);
+				 
+				link[0].click();
+				link.remove();*/
+	  		}
 	  	});
-		/*console.log("\n outside .success " + data)
-		angular.forEach($scope.links, link {
-			$window.open("link.html/?" + link, '_blank');
-		}*/
-		
 	}
 	
 	$scope.userId = getQueryVariable("userId");
 	$scope.bookmarkIndex = getQueryVariable("bookmarkIndex");
 	$scope.openUrls();
-
 });
 
