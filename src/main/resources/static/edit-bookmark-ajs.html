@@ -18,8 +18,8 @@
 	    <div>
 	    	    <div class="row">
 					<div class="large-12 columns">
-						<h3> Edit Preset </h3>
-						<p>
+						<h3> Edit Bookmark </h3>
+						<p></p>
 					</div>
 				</div>
 				
@@ -53,12 +53,14 @@
        						</div>
 						  </div>
 						</form>
-	            	    <a href="index.html" class="button small" >Done</a> </tr>
+	            	    
+	            	    <!-- these hrefs to "index.html" need to be dynamic, possible created in angular to link to proper user -->
+	            	    <a href="index.html" class="button small" >Done</a>   	    
+	            	    <div class = "large-12 colums">
+	           			    <a href="index.html" class="button small button alert right" ng-click=deleteBookmark()> Delete Bookmark</a>	
+	            	    </div>
 	            	</div>
 	       	 </div>
-
 	    </div>
-
 	</body>
-
 </html>
