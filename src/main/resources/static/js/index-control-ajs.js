@@ -17,23 +17,6 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 		return(false);
 	}
 	
-/*
-	$scope.openUrls = function(index){
-		console.log("in openUrls");
-		//$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + index)
-		$http.post("loadUrls/?userId=" + "user1" + "&bookmarkIndex=" + index)
-	  	.success(function(data){
-	  		console.log(data);
-	  		$scope.urls = data;		
-	  	});
-		console.log("\n outside .success " + data)
-		angular.forEach($scope.links, link {
-			$window.open("link.html/?" + link, '_blank');
-		}
-		
-	}*/
-	
-	
 	//basically I combined the getBookmarkCount(username) and addPreset()
 	//functions because scoping was an issue, but probably not good practice
 	$scope.addPreset = function() {

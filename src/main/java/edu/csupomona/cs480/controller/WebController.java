@@ -51,13 +51,13 @@ public class WebController {
 	 * in your web browser, type the link:
 	 * 	http://localhost:8080/cs480/ping
 	 */
-	@RequestMapping(value = "/cs480/ping", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs480/ping", method = RequestMethod.GET)
 	String healthCheck() {
 		// You can replace this with other string,
 		// and run the application locally to check your changes
 		// with the URL: http://localhost:8080/
 		return "OK";
-	}
+	}*/
 
 	/**
 	 * This is a simple example of how to use a data manager
@@ -145,35 +145,35 @@ public class WebController {
 	 *
 	 * @param userId
 	 */
-	@RequestMapping(value = "/cs480/user/delete/{userId}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs480/user/delete/{userId}", method = RequestMethod.GET)
 	User deleteUser(
 			@PathVariable("userId") String userId) {
 		User returnUser = userManager.getUser(userId);
 		userManager.deleteUser(userId);
 		return returnUser;
-	}
+	}*/
 
 	/**
 	 * This API lists all the users in the current database.
 	 *
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
 	List<User> listAllUsers() {
 		return userManager.listAllUsers();
-	}
+	}*/
 
 	/*********** Web UI Test Utility **********/
 	/**
 	 * This method provide a simple web UI for you to test the different
 	 * functionalities used in this web service.
 	 */
-	@RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
 	ModelAndView getUserHomepage() {
 		ModelAndView modelAndView = new ModelAndView("home");
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
-	}
+	}*/
 	
 	/**
 	 * This is a test for inputing data into user 
@@ -191,16 +191,6 @@ public class WebController {
 			@RequestParam("userId") String userId) {
 		return userManager.getUser(userId).getBookmarkNames();
 	}
-	
-	/* Does not work yet
-	@RequestMapping(value = "/preset1/pages", method = RequestMethod.GET)
-	List<String> listPages() {
-		//User user1 = new User("user1", "password1");
-		
-		//ask how to make url take variables so we don't have to make 8 of them
-		System.out.println(userManager.getUser("user1").getBookmark(0).getUrls());
-		return userManager.getUser("user1").getBookmark(0).getUrls();
-	}*/
 	
 	/** 
 	 * Displays all of the information about the given user
@@ -279,7 +269,7 @@ public class WebController {
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
 	String danielTest() {
 		String myString = "Ey b0ss, give me the code please.";
 		//for assignment 5, apparently all it does is print 000000 to console
@@ -291,7 +281,7 @@ public class WebController {
 	        System.out.print(a[i]);
 		}
 	    return myString;
-	}
+	}*/
 	
      
      /**
@@ -299,9 +289,9 @@ public class WebController {
       *
       * @return
       */
-     @RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
+     /*@RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
      String ianTest() {
           String testString = "" + Math.pow(2, .5) + " " + MoreObjects.toStringHelper(this).toString();
           return testString;
-     }
+     }*/
 }

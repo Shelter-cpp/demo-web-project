@@ -17,41 +17,41 @@ cs480App.controller('EditBookmarkCtrl', function ($scope, $http) {
 		return(false);
 	}
 	
-  $scope.loadUrls = function() {
+    $scope.loadUrls = function() {
 	  $http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
-	  	.success(function(data){
-	  		console.log(data);
+	    .success(function(data){
+	    	console.log(data);
 	  		$scope.urls = data;
 	  	});
-  }
+    }
   
-  $scope.addUrl = function() {
-	  $http.post("edit-bookmark-ajs/addUrl/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex + "&url=" + $scope.newUrl)
+    $scope.addUrl = function() {
+      $http.post("edit-bookmark-ajs/addUrl/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex + "&url=" + $scope.newUrl)
 	  	.success(function(data){
 	  		console.log("Added url: " + $scope.newUrl);
 	  		$scope.loadUrls();
 	  	});
-  }
+    }
   
-  $scope.deleteUrl = function(index) {
+    $scope.deleteUrl = function(index) {
 	  $http.post("edit-bookmark-ajs/deleteUrl/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex + "&urlIndex=" + index)
 	  	.success(function(data){
 	  		console.log("Deleted url at index: " + index);
 	  		$scope.loadUrls();
 	  	});
-  }
+    }
   
-  $scope.deleteBookmark = function() {
+    $scope.deleteBookmark = function() {
 	  $http.post("edit-bookmark-ajs/deleteBookmark/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
 	  	.success(function(data){
 	  		console.log("Deleted bookmark at index: " + $scope.bookmarkIndex);
 	  	});
-  }
+    }
 
-  $scope.userId = getQueryVariable("userId");
-  $scope.bookmarkIndex = getQueryVariable("bookmarkIndex");
-  console.log($scope.userId);
-  console.log($scope.bookmarkIndex);
-  $scope.loadUrls();
+    $scope.userId = getQueryVariable("userId");
+    $scope.bookmarkIndex = getQueryVariable("bookmarkIndex");
+    console.log($scope.userId);
+    console.log($scope.bookmarkIndex);
+    $scope.loadUrls();
 
 });
