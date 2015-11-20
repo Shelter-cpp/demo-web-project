@@ -55,7 +55,7 @@ cs480App.controller('AddBookmarkCtrl', function ($scope, $http) {
 					&nbsp;\
 				    &nbsp;\
 					<ul class="stack button-group">\
-				    <li><a targe="_blank" href="open-urls-ajs.html?userId=user1&bookmarkIndex=' + num + '" class="button large" ng-click="openUrls(' + num + ')" >' + presetName +'</a></li>\
+				    <li><a target="_blank" href="open-urls-ajs.html?userId=user1&bookmarkIndex=' + num + '" class="button large" ng-click="openUrls(' + num + ')" >' + presetName +'</a></li>\
 				    <li><a href="edit-bookmark-ajs.html?userId=user1&bookmarkIndex=' + num +'" class="button small">Edit</a></li>\
 				    </ul>\
 				    </div>';

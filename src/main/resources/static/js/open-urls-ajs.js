@@ -25,7 +25,14 @@ cs480App.controller('OpenUrlsCtrl', function ($scope, $http) {
 	  		console.log(data);	
 	  		for(var i=0; i<data.length; i++){
 	  			console.log(data[i] + "\n");
-	  			window.open("http://" + data[i]);
+	  			if(i<data.length-1){
+	  			    window.open("http://" + data[i]);
+	  			    console.log("in if statement, url: " + data[i]);
+	  			}
+	  			else{
+	  				console.log("in else statement, url: " + data[i]);
+	  				window.open("http://" + data[i], "_self");
+	  			}
 	  			//window.open("link.html/?" + data[i], '_blank');
 	  			/*var url = data[i];
 				var link = angular.element('<a href="' + url + '" target="_blank"></a>');
