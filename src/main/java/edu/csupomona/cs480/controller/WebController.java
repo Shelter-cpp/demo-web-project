@@ -194,16 +194,27 @@ public class WebController {
 	}
 	
 	@RequestMapping(value = "/checkForNewUser/", method = RequestMethod.POST)
-	boolean checkForNewUser(
+	int checkForNewUser(
+			@RequestParam("password") String pass,
 			@RequestParam("userId") String userId) {
+		System.out.println("atempt login: username: "+userId + " password: " + pass);
 		User user = userManager.getUser(userId);
 		if(user == null) {
-			user = new User(userId);
+			user = new User(userId, pass);
 			userManager.updateUser(user);
-			System.out.println("Added new userId: " + userId);
-			return true;
+			//user.setPassword(pass);
+			System.out.println("Added new userId: " + user.getUsername() + " password: " + user.getPassword());
+			return 0;
 		}
-		return false;
+		String controllerPass = user.getPassword();
+		if(user.checkPassword(pass)){
+			System.out.println("returning 1 (correct pass) userpass: |" + controllerPass + "| atempt pass: |" + pass+"|");
+			return 1;
+		}
+		else{
+			System.out.println("returning 2 (incorrect pass) userpass: |" + controllerPass + "| atempt pass: |" + pass+"|");
+			return 2;
+		}
 	}
 	
 	/** 

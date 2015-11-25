@@ -40,7 +40,6 @@ public class User implements UserInterface {
     
     public User(String username) {
     	this.username = username;
-    	password = "password";
     }
     
     public User() {}

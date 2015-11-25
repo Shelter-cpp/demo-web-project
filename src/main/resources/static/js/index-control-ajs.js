@@ -5,7 +5,16 @@ var cs480App = angular.module('Index', []);
 cs480App.controller('IndexCtrl', function ($scope, $http) {
 	
 	$scope.login = function() {
-		$http.post("checkForNewUser/?userId=" + $scope.userId)
-		window.open("user-home-ajs.html?userId=" + $scope.userId, "_self");
+		var pass = document.getElementById('userPassword').value;
+		console.log(pass);
+		$http.post("checkForNewUser/?userId=" + $scope.userId + "&password=" + pass)
+			.success(function(data){
+				console.log("in js, data: " + data);
+				//0 is new user, 1 is existing user, 2 is existing user wrong password
+				if(data==0 || data==1)
+					window.open("user-home-ajs.html?userId=" + $scope.userId, "_self");
+				else
+					window.alert("Incorrect Password");
+		});
 	}
 });
