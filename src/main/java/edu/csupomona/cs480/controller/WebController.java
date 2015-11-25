@@ -190,13 +190,20 @@ public class WebController {
 	List<String> listBookmarks(
 			@RequestParam("userId") String userId) {
 		System.out.println("load bookmarks for userId: " + userId);
+		return userManager.getUser(userId).getBookmarkNames();
+	}
+	
+	@RequestMapping(value = "/checkForNewUser/", method = RequestMethod.POST)
+	boolean checkForNewUser(
+			@RequestParam("userId") String userId) {
 		User user = userManager.getUser(userId);
 		if(user == null) {
 			user = new User(userId);
 			userManager.updateUser(user);
+			System.out.println("Added new userId: " + userId);
+			return true;
 		}
-		System.out.println("logging in userId: " + userId);
-		return userManager.getUser(userId).getBookmarkNames();
+		return false;
 	}
 	
 	/** 
