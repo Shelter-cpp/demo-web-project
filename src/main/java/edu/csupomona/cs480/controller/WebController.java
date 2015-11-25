@@ -190,6 +190,12 @@ public class WebController {
 	List<String> listBookmarks(
 			@RequestParam("userId") String userId) {
 		System.out.println("load bookmarks for userId: " + userId);
+		User user = userManager.getUser(userId);
+		if(user == null) {
+			user = new User(userId);
+			userManager.updateUser(user);
+		}
+		System.out.println("logging in userId: " + userId);
 		return userManager.getUser(userId).getBookmarkNames();
 	}
 	
