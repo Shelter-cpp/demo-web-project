@@ -189,6 +189,7 @@ public class WebController {
 	@RequestMapping(value = "/loadBookmarks/", method = RequestMethod.POST)
 	List<String> listBookmarks(
 			@RequestParam("userId") String userId) {
+		System.out.println("load bookmarks for userId: " + userId);
 		return userManager.getUser(userId).getBookmarkNames();
 	}
 	
@@ -233,7 +234,6 @@ public class WebController {
 		User user = userManager.getUser(username);
 		Bookmark tempBookmark = new BookmarkBuilder().name(bookmarkName).build();
 		//user.addBookmark(new Bookmark(bookmarkName));
-		
 		user.addBookmark(tempBookmark);
 		userManager.updateUser(user);
 		
@@ -243,6 +243,7 @@ public class WebController {
 	
 	@RequestMapping(value = "{user}/getBookmarkCount/", method = RequestMethod.GET)
 	int getBookmarkCount(@PathVariable("user") String username) {
+		System.out.println("getBookmarkCount for userId: " + username);
 		return userManager.getUser(username).getBookmarkCount();
 	}
 	

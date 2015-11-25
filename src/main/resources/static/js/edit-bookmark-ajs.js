@@ -53,5 +53,6 @@ cs480App.controller('EditBookmarkCtrl', function ($scope, $http) {
     console.log($scope.userId);
     console.log($scope.bookmarkIndex);
     $scope.loadUrls();
-
+    document.getElementById("done").href="user-home-ajs.html?userId=" + $scope.userId;
+    document.getElementById("delete").href="user-home-ajs.html?userId=" + $scope.userId;
 });

@@ -1,0 +1,107 @@
+<!doctype html>
+<html ng-app="UserHome">
+  <head>
+    <title>QuickTabs</title>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script src="/js/user-home-control-ajs.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./foundation.css" />
+  </head>
+  <body ng-controller="UserHomeCtrl" id="divID">
+  
+    <div class="row">
+        <div class="large-12 columns">
+        
+ <!-- Topbar, login/logout  -->        
+          <div class="row">
+            <div class="large-12 columns">
+              <nav class="top-bar" data-topbar>
+              	<!--<ul class="left">
+                  <li class="name">
+                    <h1>
+                    	<a href="#"> Guest Login</a>
+                    </h1>
+                  </li>
+                  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                </ul>--> 
+                <ul class="right">
+                  <li class="name">
+                    <h1>
+                      <a href="index.html">Log Off</a>
+                    </h1>
+                  </li>
+                  <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+                </ul> 
+              </nav>  
+            </div>
+          </div>
+
+		  
+<!-- Create new Bookmark bar -->		  
+		  <div class="row">
+			 <div class="large-12 columns"><hr/>
+					<form>
+						<div class="row collapse">
+							<div class="small-3 large-2 columns">
+							  <span class="prefix"></span>
+							</div>
+							<div class="small-9 large-8 columns">
+							  <input type="text" placeholder="Enter New Bookmark Name (Home, Work, etc)" ng-model="newBookmark" id="presetName">
+							</div>
+							<div class="small-2 columns">
+        					  <button class="button postfix" ng-click="addPreset()">Create</button>
+       						</div>
+						</div>
+					</form>
+			 </div>
+		 </div>    
+     
+     
+<!-- Logo/moto -->     
+          <div class="row">
+     
+            <div class="large-2 small-3 columns">
+     
+              <img src="http://goo.gl/9NFXnJ">
+                   
+              <div class="hide-for-small panel">
+                <h4>QuickTabs</h4>
+                <h5 class="subheader">All your bookmarks. Anywhere. Anytime.</h5>
+              </div>
+            </div>                            
+		  
+<!-- Bookmarks using angularjs-->		  
+		    <div class="large-10 small-8 columns">
+              <div class="row" id="content">
+			  </div>
+            </div>    
+     
+         
+<!-- Copyright/bottom bar -->     
+          <footer class="row">
+            <div class="large-12 columns"><hr/>
+              <div class="row">
+     
+                <div class="large-6 columns">
+                  <p>� Copyright Feel Good Inc.</p>
+                </div>
+     
+                <div class="large-6 columns">
+                  <ul class="inline-list right">
+                    <li><a href="https://github.com/Shelter-cpp/demo-web-project">Github</a></li>
+                    <li><a href="http://foundation.zurb.com/">Foundation</a></li>
+                    <li><a href="#">Link 3</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </footer>    
+      
+        </div> <!-- This </div> is here so the Logo and Bookmarks to align-->
+        
+      </div>
+    </div>  
+    
+  </body>
+</html>
