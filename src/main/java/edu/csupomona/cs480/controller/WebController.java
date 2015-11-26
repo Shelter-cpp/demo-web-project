@@ -69,11 +69,12 @@ public class WebController {
 	 * Try it in your web browser:
 	 * 	http://localhost:8080/cs480/user/user101
 	 */
+	/*
 	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.GET)
 	User getUser(@PathVariable("userId") String userId) {
 		User user = userManager.getUser(userId);
 		return user;
-	}
+	}*/
 
 	/**
 	 * This is an example of sending an HTTP POST request to
@@ -93,7 +94,7 @@ public class WebController {
 	 * @param major
 	 * @return
 	 */
-	
+	/*
 	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
 	User updateUser(
 			@PathVariable("userId") String id,
@@ -105,7 +106,7 @@ public class WebController {
 		//user.setName(name);
 		userManager.updateUser(user);
 		return user;
-	}
+	}*/
 	
 	//a comment edit to test automatic deployment
 	@RequestMapping(value = "/edit-bookmark-ajs/addUrl", method = RequestMethod.POST)
@@ -137,7 +138,6 @@ public class WebController {
 		User user = userManager.getUser(id);
 		user.deleteBookmark(Integer.parseInt(bookmarkIndex));
 		userManager.updateUser(user);
-		System.out.println("Delete bookmark at index: " + bookmarkIndex);
 	}
 
 	/**
@@ -189,7 +189,6 @@ public class WebController {
 	@RequestMapping(value = "/loadBookmarks/", method = RequestMethod.POST)
 	List<String> listBookmarks(
 			@RequestParam("userId") String userId) {
-		System.out.println("load bookmarks for userId: " + userId);
 		return userManager.getUser(userId).getBookmarkNames();
 	}
 	
@@ -197,7 +196,9 @@ public class WebController {
 	int checkForNewUser(
 			@RequestParam("password") String pass,
 			@RequestParam("userId") String userId) {
-		System.out.println("atempt login: username: "+userId + " password: " + pass);
+		
+		System.out.println("atempt login: username: |" + userId + "| password: |" + pass + "|");
+		
 		if(userId == "undefined" || pass.length()==0)
 			return 3;
 		
@@ -205,17 +206,16 @@ public class WebController {
 		if(user == null) {
 			user = new User(userId, pass);
 			userManager.updateUser(user);
-			//user.setPassword(pass);
 			System.out.println("Added new userId: " + user.getUsername() + " password: " + user.getPassword());
 			return 0;
 		}
-		String controllerPass = user.getPassword();
+		//correct username/password
 		if(user.checkPassword(pass)){
-			System.out.println("returning 1 (correct pass) userpass: |" + controllerPass + "| atempt pass: |" + pass+"|");
+			System.out.println("returning 1 (correct pass) userpass: |" + user.getPassword() + "| atempt pass: |" + pass+"|");
 			return 1;
-		}
+		}//correct username, incorrect password
 		else{
-			System.out.println("returning 2 (incorrect pass) userpass: |" + controllerPass + "| atempt pass: |" + pass+"|");
+			System.out.println("returning 2 (incorrect pass) userpass: |" + user.getPassword() + "| atempt pass: |" + pass+"|");
 			return 2;
 		}
 	}
@@ -226,6 +226,7 @@ public class WebController {
 	 * @param username
 	 * @return
 	 */
+	/*
 	@RequestMapping(value = "/get/{username}", method = RequestMethod.GET)
 	String getUserInfo(@PathVariable("username") String username) {
 		String testUrl1 = "www.google.com";
@@ -241,36 +242,35 @@ public class WebController {
 		
 		String userInfo = userManager.getUser(username).toString();
 		return userInfo;
-	}
+	}*/
 	
+	/*
 	@RequestMapping(value = "/admin/{password}/getall", method = RequestMethod.GET)
 	List<User> getAdminPage(@PathVariable("password") String password) {
 		Admin admin = Admin.getInstance(password);
 		return admin.getAllUsers();
-	}
+	}*/
 	
+	/*
 	@RequestMapping(value = "/levl/test/{input1}/get/{input2}", method = RequestMethod.GET)
 	void testTwo(
 			@PathVariable("input1") String name, @PathVariable("input2") String price) {
 		System.out.println(name + " " + price);
 		//return admin.getAllUsers();
-	}
+	}*/
 	
 	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.GET)
 	int addBookmarkToUser(@PathVariable("user") String username,@PathVariable("bookmarkName") String bookmarkName) {
 		User user = userManager.getUser(username);
 		Bookmark tempBookmark = new BookmarkBuilder().name(bookmarkName).build();
-		//user.addBookmark(new Bookmark(bookmarkName));
 		user.addBookmark(tempBookmark);
 		userManager.updateUser(user);
 		
-		System.out.println(user.getBookmarkCount());
 		return user.getBookmarkCount();
 	}
 	
 	@RequestMapping(value = "{user}/getBookmarkCount/", method = RequestMethod.GET)
 	int getBookmarkCount(@PathVariable("user") String username) {
-		System.out.println("getBookmarkCount for userId: " + username);
 		return userManager.getUser(username).getBookmarkCount();
 	}
 	

@@ -20,7 +20,6 @@ cs480App.controller('UserHomeCtrl', function ($scope, $http) {
 	//basically I combined the getBookmarkCount(username) and addPreset()
 	//functions because scoping was an issue, but probably not good practice
 	$scope.addPreset = function() {
-		//username needs to be dynamic
 		$http.get($scope.userId + "/getBookmarkCount/")
 			.success(function(num) {
 				console.log(num);
@@ -71,9 +70,7 @@ cs480App.controller('UserHomeCtrl', function ($scope, $http) {
 					    </ul>\
 					    </div>';
 					document.getElementById('content').appendChild(div);  
-		  		}
-
-		  		
+		  		} 		
 		  	});
 	  }
 	

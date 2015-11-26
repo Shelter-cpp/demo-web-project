@@ -10,7 +10,7 @@ cs480App.controller('IndexCtrl', function ($scope, $http) {
 		$http.post("checkForNewUser/?userId=" + $scope.userId + "&password=" + pass)
 			.success(function(data){
 				console.log("in js, data: " + data);
-				//0 is new user, 1 is existing user, 2 is existing user wrong password
+				//0 is new user, 1 is existing user, 2 is existing user wrong password, 3 is empty username/password
 				if(data==0 || data==1)
 					window.open("user-home-ajs.html?userId=" + $scope.userId, "_self");
 				if(data==2)

@@ -19,10 +19,12 @@ cs480App.controller('OpenUrlsCtrl', function ($scope, $http) {
 		
 	$scope.openUrls = function(){
 		console.log("in openUrls");
-		//$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + index)
 		$http.post("loadUrls/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex)
 	  	.success(function(data){
-	  		console.log(data);	
+	  		console.log(data);
+	  		if(data.length == 0){
+	  			window.close();
+	  		}
 	  		for(var i=0; i<data.length; i++){
 	  			console.log(data[i] + "\n");
 	  			if(i<data.length-1){
@@ -33,15 +35,6 @@ cs480App.controller('OpenUrlsCtrl', function ($scope, $http) {
 	  				console.log("in else statement, url: " + data[i]);
 	  				window.open("http://" + data[i], "_self");
 	  			}
-	  			//window.open("link.html/?" + data[i], '_blank');
-	  			/*var url = data[i];
-				var link = angular.element('<a href="' + url + '" target="_blank"></a>');
-				console.log("link to open: "+link);
-				 
-				angular.element(document.body).append(link);
-				 
-				link[0].click();
-				link.remove();*/
 	  		}
 	  	});
 	}
