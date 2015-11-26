@@ -198,6 +198,9 @@ public class WebController {
 			@RequestParam("password") String pass,
 			@RequestParam("userId") String userId) {
 		System.out.println("atempt login: username: "+userId + " password: " + pass);
+		if(userId == "undefined" || pass.length()==0)
+			return 3;
+		
 		User user = userManager.getUser(userId);
 		if(user == null) {
 			user = new User(userId, pass);

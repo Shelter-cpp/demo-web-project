@@ -13,8 +13,10 @@ cs480App.controller('IndexCtrl', function ($scope, $http) {
 				//0 is new user, 1 is existing user, 2 is existing user wrong password
 				if(data==0 || data==1)
 					window.open("user-home-ajs.html?userId=" + $scope.userId, "_self");
-				else
+				if(data==2)
 					window.alert("Incorrect Password");
+				if(data==3)
+					window.alert("Please enter a Username/Password");
 		});
 	}
 });
