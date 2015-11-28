@@ -112,10 +112,14 @@ public class WebController {
 			@RequestParam("password") String pass,
 			@RequestParam("userId") String userId) {
 		
-		System.out.println("atempt login: username: |" + userId + "| password: |" + pass + "|");
+		System.out.println("attempt login: username: |" + userId + "| password: |" + pass + "|");
 		
 		if(userId == "undefined" || pass.length()==0)
 			return 3;
+		
+		if(userId.contains("?") || userId.contains("=") || userId.contains("/") || userId.contains("\\") || userId.contains("&")){
+			return 4;
+		}
 		
 		User user = userManager.getUser(userId);
 		if(user == null) {
@@ -126,11 +130,11 @@ public class WebController {
 		}
 		//correct username/password
 		if(user.checkPassword(pass)){
-			System.out.println("returning 1 (correct pass) userpass: |" + user.getPassword() + "| atempt pass: |" + pass+"|");
+			System.out.println("returning 1 (correct pass) username logged in: |" + user.getUsername() + "|");
 			return 1;
 		}//correct username, incorrect password
 		else{
-			System.out.println("returning 2 (incorrect pass) userpass: |" + user.getPassword() + "| atempt pass: |" + pass+"|");
+			System.out.println("returning 2 (incorrect pass) userpass: |" + user.getPassword() + "| attempt pass: |" + pass+"|");
 			return 2;
 		}
 	}

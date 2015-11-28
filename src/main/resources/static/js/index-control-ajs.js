@@ -15,6 +15,8 @@ cs480App.controller('IndexCtrl', function ($scope, $http) {
 					window.alert("Incorrect Password");
 				if(data==3)
 					window.alert("Please enter a Username/Password");
+				if(data==4)
+					window.alert("Username cannot contain the characters: ?, =, &, /, or \\");
 		});
 	}
 });
