@@ -1,5 +1,3 @@
-// This is the version used for the HTML home-ajs.html with AngularJS
-// This is the trending technology
 var cs480App = angular.module('UserHome', []);
 
 cs480App.controller('UserHomeCtrl', function ($scope, $http) {
@@ -17,8 +15,6 @@ cs480App.controller('UserHomeCtrl', function ($scope, $http) {
 		return(false);
 	}
 	
-	//basically I combined the getBookmarkCount(username) and addPreset()
-	//functions because scoping was an issue, but probably not good practice
 	$scope.addPreset = function() {
 		$http.get($scope.userId + "/getBookmarkCount/")
 			.success(function(num) {

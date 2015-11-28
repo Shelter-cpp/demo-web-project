@@ -1,5 +1,3 @@
-// This is the version used for the HTML home-ajs.html with AngularJS
-// This is the trending technology
 var cs480App = angular.module('OpenUrls', []);
 
 cs480App.controller('OpenUrlsCtrl', function ($scope, $http) {

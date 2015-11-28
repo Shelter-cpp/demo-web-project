@@ -43,72 +43,8 @@ public class WebController {
 	 */
 	@Autowired
 	private UserManager userManager;
-
-	/**
-	 * This is a simple example of how the HTTP API works.
-	 * It returns a String "OK" in the HTTP response.
-	 * To try it, run the web application locally,
-	 * in your web browser, type the link:
-	 * 	http://localhost:8080/cs480/ping
-	 */
-	/*@RequestMapping(value = "/cs480/ping", method = RequestMethod.GET)
-	String healthCheck() {
-		// You can replace this with other string,
-		// and run the application locally to check your changes
-		// with the URL: http://localhost:8080/
-		return "OK";
-	}*/
-
-	/**
-	 * This is a simple example of how to use a data manager
-	 * to retrieve the data and return it as an HTTP response.
-	 * <p>
-	 * Note, when it returns from the Spring, it will be
-	 * automatically converted to JSON format.
-	 * <p>
-	 * Try it in your web browser:
-	 * 	http://localhost:8080/cs480/user/user101
-	 */
-	/*
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.GET)
-	User getUser(@PathVariable("userId") String userId) {
-		User user = userManager.getUser(userId);
-		return user;
-	}*/
-
-	/**
-	 * This is an example of sending an HTTP POST request to
-	 * update a user's information (or create the user if not
-	 * exists before).
-	 *
-	 * You can test this with a HTTP client by sending
-	 *  http://localhost:8080/cs480/user/user101
-	 *  	name=John major=CS
-	 *
-	 * Note, the URL will not work directly in browser, because
-	 * it is not a GET request. You need to use a tool such as
-	 * curl.
-	 *
-	 * @param id
-	 * @param name
-	 * @param major
-	 * @return
-	 */
-	/*
-	@RequestMapping(value = "/cs480/user/{userId}", method = RequestMethod.POST)
-	User updateUser(
-			@PathVariable("userId") String id,
-			@RequestParam("name") String name,
-			@RequestParam(value = "major", required = false) String major) {
-		User user = new User(id, "password");
-		//user.setUsername(id);
-		//user.setMajor(major);
-		//user.setName(name);
-		userManager.updateUser(user);
-		return user;
-	}*/
 	
-	//a comment edit to test automatic deployment
+	//add url to a bookmark for user
 	@RequestMapping(value = "/edit-bookmark-ajs/addUrl", method = RequestMethod.POST)
 	void addUrl(
 			@RequestParam("userId") String id,
@@ -120,6 +56,7 @@ public class WebController {
 		System.out.println("Add url: " + newUrl);
 	}
 	
+	//delete url from a bookmark for user
 	@RequestMapping(value = "/edit-bookmark-ajs/deleteUrl", method = RequestMethod.POST)
 	void deleteUrl(
 			@RequestParam("userId") String id,
@@ -131,6 +68,7 @@ public class WebController {
 		System.out.println("Delete url at index: " + urlIndex);
 	}
 	
+	//delete bookmark from user
 	@RequestMapping(value = "/edit-bookmark-ajs/deleteBookmark", method = RequestMethod.POST)
 	void deleteBookmark(
 			@RequestParam("userId") String id,
@@ -152,33 +90,8 @@ public class WebController {
 		userManager.deleteUser(userId);
 		return returnUser;
 	}*/
-
-	/**
-	 * This API lists all the users in the current database.
-	 *
-	 * @return
-	 */
-	/*@RequestMapping(value = "/cs480/users/list", method = RequestMethod.GET)
-	List<User> listAllUsers() {
-		return userManager.listAllUsers();
-	}*/
-
-	/*********** Web UI Test Utility **********/
-	/**
-	 * This method provide a simple web UI for you to test the different
-	 * functionalities used in this web service.
-	 */
-	/*@RequestMapping(value = "/cs480/home", method = RequestMethod.GET)
-	ModelAndView getUserHomepage() {
-		ModelAndView modelAndView = new ModelAndView("home");
-		modelAndView.addObject("users", listAllUsers());
-		return modelAndView;
-	}*/
 	
-	/**
-	 * This is a test for inputing data into user 
-	 * 
-	 */
+	//loads urls for edit-bookmark-ajs.html page
 	@RequestMapping(value = "/loadUrls/", method = RequestMethod.POST)
 	List<String> listURLS(
 			@RequestParam("userId") String userId,
@@ -186,12 +99,14 @@ public class WebController {
 		return userManager.getUser(userId).getBookmark(Integer.parseInt(bookmarkIndex)).getUrls();
 	}
 	
+	//loads bookmarks for user-home-ajs.html
 	@RequestMapping(value = "/loadBookmarks/", method = RequestMethod.POST)
 	List<String> listBookmarks(
 			@RequestParam("userId") String userId) {
 		return userManager.getUser(userId).getBookmarkNames();
 	}
 	
+	//checks login
 	@RequestMapping(value = "/checkForNewUser/", method = RequestMethod.POST)
 	int checkForNewUser(
 			@RequestParam("password") String pass,
@@ -220,45 +135,7 @@ public class WebController {
 		}
 	}
 	
-	/** 
-	 * Displays all of the information about the given user
-	 * 
-	 * @param username
-	 * @return
-	 */
-	/*
-	@RequestMapping(value = "/get/{username}", method = RequestMethod.GET)
-	String getUserInfo(@PathVariable("username") String username) {
-		String testUrl1 = "www.google.com";
-		String testUrl2 = "www.facebook.com";
-		String testUrl3 = "www.github.com";
-		String testUrl4 = "www.youtube.com";
-		Bookmark testBookmark1 = new BookmarkBuilder().name("Bookmark 1").url(testUrl1).url(testUrl2).url(testUrl3).url(testUrl4).build();
-		Bookmark testBookmark2 = new BookmarkBuilder().name("Bookmark 2").url(testUrl2).url(testUrl3).build();
-		Bookmark testBookmark3 = new BookmarkBuilder().name("Bookmark 3").url(testUrl1).url(testUrl2).url(testUrl3).build();
-		Bookmark testBookmark4 = new BookmarkBuilder().name("Bookmark 4").url(testUrl1).url(testUrl4).build();
-		User newUser = new UserBuilder().username(username).password("password").bookmark(testBookmark1).bookmark(testBookmark2).bookmark(testBookmark3).bookmark(testBookmark4).build();
-		userManager.updateUser(newUser);
-		
-		String userInfo = userManager.getUser(username).toString();
-		return userInfo;
-	}*/
-	
-	/*
-	@RequestMapping(value = "/admin/{password}/getall", method = RequestMethod.GET)
-	List<User> getAdminPage(@PathVariable("password") String password) {
-		Admin admin = Admin.getInstance(password);
-		return admin.getAllUsers();
-	}*/
-	
-	/*
-	@RequestMapping(value = "/levl/test/{input1}/get/{input2}", method = RequestMethod.GET)
-	void testTwo(
-			@PathVariable("input1") String name, @PathVariable("input2") String price) {
-		System.out.println(name + " " + price);
-		//return admin.getAllUsers();
-	}*/
-	
+	//adds new bookmark for user
 	@RequestMapping(value = "{user}/addBookmark/{bookmarkName}", method = RequestMethod.GET)
 	int addBookmarkToUser(@PathVariable("user") String username,@PathVariable("bookmarkName") String bookmarkName) {
 		User user = userManager.getUser(username);
@@ -269,57 +146,10 @@ public class WebController {
 		return user.getBookmarkCount();
 	}
 	
+	//returns bookmark count for user
 	@RequestMapping(value = "{user}/getBookmarkCount/", method = RequestMethod.GET)
 	int getBookmarkCount(@PathVariable("user") String username) {
 		return userManager.getUser(username).getBookmarkCount();
 	}
 	
-	
-	/**
-	 * This API tests to see if Alex knows what he is doing.
-	 * 
-	 * @return
-	 */
-	/*
-	@RequestMapping(value = "/cs480/alextest", method = RequestMethod.GET)
-	ModelAndView alexTest() {
-		ModelAndView modelAndView = new ModelAndView("test-home");
-		return modelAndView;
-		testManager.updateTestUser();
-		User user;
-		user = testManager.getTestUser();
-		return user;
-	}
-	*/
-	
-	/**
-	 * This API tests to see if Daniel knows what he is doing.
-	 * 
-	 * @return
-	 */
-	/*@RequestMapping(value = "/cs480/danieltest", method = RequestMethod.GET)
-	String danielTest() {
-		String myString = "Ey b0ss, give me the code please.";
-		//for assignment 5, apparently all it does is print 000000 to console
-		//when the url is accessed
-		DescriptiveStatistics stats = new DescriptiveStatistics();
-		int a[] = new int[6];
-		for( int i = 0; i < a.length; i++) {
-	        stats.addValue(a[i]);
-	        System.out.print(a[i]);
-		}
-	    return myString;
-	}*/
-	
-     
-     /**
-      * This API tests to see if Ian knows what he is doing.
-      *
-      * @return
-      */
-     /*@RequestMapping(value = "/cs480/iantest", method = RequestMethod.GET)
-     String ianTest() {
-          String testString = "" + Math.pow(2, .5) + " " + MoreObjects.toStringHelper(this).toString();
-          return testString;
-     }*/
 }
