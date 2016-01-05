@@ -24,7 +24,15 @@ cs480App.controller('EditBookmarkCtrl', function ($scope, $http) {
     }
   
     $scope.addUrl = function() {
-      $http.post("edit-bookmark-ajs/addUrl/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex + "&url=" + $scope.newUrl)
+      var cleanUrl = $scope.newUrl;
+
+      if(cleanUrl.substring(0, 7) == "http://"){
+    	  cleanUrl = cleanUrl.substring(7, cleanUrl.length-1);
+      }
+      if(cleanUrl.substring(0, 8) == "https://"){
+    	  cleanUrl = cleanUrl.substring(8, cleanUrl.length-1);
+      }
+      $http.post("edit-bookmark-ajs/addUrl/?userId=" + $scope.userId + "&bookmarkIndex=" + $scope.bookmarkIndex + "&url=" + cleanUrl)
 	  	.success(function(data){
 	  		console.log("Added url: " + $scope.newUrl);
 	  		$scope.loadUrls();
